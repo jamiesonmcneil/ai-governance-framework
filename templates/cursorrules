@@ -1,0 +1,52 @@
+# Cursor Rules
+# Place this file at: .cursorrules in project root
+
+# Governance: Follow all rules in /path/to/ai-governance-framework/RULES.md
+# Follow the Interaction Protocol in /path/to/ai-governance-framework/INTERACTION_PROTOCOL.md
+# All rules are mandatory. Categories (Critical/High/Standard/Behavioral) indicate impact, not priority.
+# Never paste credentials, PII, or proprietary data. See SELF_GOVERNANCE.md.
+# Match AI execution environment to data sensitivity. Never process sensitive data through public AI.
+# Use only approved tools and accounts for work data. No personal AI accounts or unapproved extensions.
+# AI assists decisions — humans are accountable. AI output is not the sole basis for high-impact decisions.
+
+# === RULES ===
+
+# 1. No hard-coded values — use env vars, database, or config files
+# 2. No credentials in code — use env vars or credential store
+# 3. Parameterized SQL only — never string concatenation
+# 4. UUIDs in URLs/APIs — never numeric database IDs
+# 5. Use existing components — search before creating
+# 6. Follow project patterns — match established conventions
+# 7. No duplication — reuse, extract shared utilities
+# 8. Security first — OWASP Top 10, sanitize input, handle errors
+# 9. Verify all output — treat AI suggestions as untrusted
+
+# === CODE STYLE ===
+
+# - One component per file
+# - Files under 300 lines
+# - Descriptive names, comment "why" not "what"
+# - Handle all error cases explicitly
+# - Never swallow exceptions silently
+
+# === BEFORE WRITING CODE ===
+
+# - Read existing code in the relevant files first
+# - Check for existing shared components
+# - Identify all files that need to change
+# - Follow the pre-coding checklist in .ai-gov/RULES.md
+
+# === TESTING ===
+
+# - Every change must be verified end-to-end
+# - Code compiling is NOT verification
+# - Test in actual UI, check persistence, verify no regressions
+
+# === PRODUCTION ===
+
+# - Never modify production data or code without explicit confirmation
+# - READ-ONLY default on all production systems
+# - Deployments require rollback plan
+
+# Read /path/to/ai-governance-framework/RULES.md for the complete rule set.
+# A task is only complete at Level 5 verification (end-to-end workflow). Levels 1-4 are progress, not completion.

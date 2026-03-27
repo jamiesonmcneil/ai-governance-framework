@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "credential_storage": "file",
+  "core_governance_path": "/path/to/ai-governance-framework",
+  "org_governance_path": null,
+  "project_governance_path": null,
+  "compliance_frameworks": [],
+  "production_environment": null,
+  "ai_execution_environment": {
+    "type": "public",
+    "notes": null
+  },
+  "ai_tools": ["claude-code"],
+  "confirmed_date": null
+}

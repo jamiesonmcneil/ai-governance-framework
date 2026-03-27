@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "credential_storage": null,
+  "core_governance_path": "/path/to/ai-governance-framework",
+  "org_governance_path": null,
+  "project_governance_path": null,
+  "compliance_frameworks": [],
+  "production_environment": null,
+  "ai_execution_environment": {
+    "type": null,
+    "notes": null
+  },
+  "ai_tools": [],
+  "confirmed_date": null
+}
