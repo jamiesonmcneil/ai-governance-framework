@@ -1,0 +1,11 @@
+# AI Governance — user-specific config (never commit)
+.ai-gov.user.json
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db

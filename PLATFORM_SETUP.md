@@ -2,9 +2,29 @@
 
 **How to configure each AI tool to use this governance framework.**
 
-Last Reviewed: 2026-03-24 | Next Review Due: 2026-06-24
+This section is primarily for developers or technical users configuring AI tools. Non-technical users should start with `USER_SETUP.md` instead.
+
+Last Reviewed: 2026-03-30 | Next Review Due: 2026-06-30
 
 The governance rules are tool-agnostic, but each AI platform has its own mechanism for loading instructions at session start. This guide covers the major platforms. **Platform configurations change frequently — review every 90 days and update as needed.** If a tool cannot enforce rules automatically, the user must enforce them manually. If full integration is not possible, reference RULES.md manually and use tracking files.
+
+---
+
+## Per-User Setup
+
+Before configuring any AI tool, each user should complete the onboarding in `USER_SETUP.md`. This takes 5 minutes and covers all roles.
+
+Developers should also create a `.ai-gov.user.json` file in the project root (this file is gitignored — it stays on your machine only):
+
+```json
+{
+  "role": "developer",
+  "ai_tools": ["claude-code"],
+  "governance_acknowledged": "2026-03-30"
+}
+```
+
+AI tools that support session configuration (e.g., Claude Code, Cursor) can read this file at session start and adjust their guidance based on your role. See `USER_SETUP.md` for details.
 
 ---
 
@@ -162,6 +182,8 @@ If your AI tool doesn't have a native config mechanism:
 
 ```
 your-project/
+├── .ai-gov.json                    # Project config (committed to git)
+├── .ai-gov.user.json               # User config (gitignored — per-user)
 ├── .ai-gov/                        # Governance files
 │   ├── RULES.md                    # All rules (mandatory read)
 │   ├── CREDENTIAL_SECURITY.md      # Credential handling

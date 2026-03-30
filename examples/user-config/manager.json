@@ -1,0 +1,5 @@
+{
+  "role": "manager",
+  "ai_tools": ["claude", "copilot"],
+  "governance_acknowledged": "2026-03-30"
+}

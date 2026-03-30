@@ -9,11 +9,17 @@
 ## Session Start
 
 1. Read `.ai-gov.json` — if it exists, present config and ask user to confirm. If it doesn't exist, ask the configuration questions (see core README.md) and create it.
-2. Read core governance: RULES.md (all 14 rules) and INTERACTION_PROTOCOL.md (message parsing and response protocol)
-3. Read `docs/PROGRESS.md` and `docs/TASKS.md` (if they exist)
-4. If `project_governance_path` is set in `.ai-gov.json`, read PROJECT_RULES.md and FORBIDDEN.md
-5. Ensure the current task is clearly understood before writing any code
-6. If any required file is missing (.ai-gov.json, PROGRESS.md, project governance), confirm with the user before proceeding
+2. If `.ai-gov.user.json` exists, read it. Use the user's role to adjust guidance:
+   - **developer:** Full governance — emphasize rules, patterns, verification, production safety
+   - **analyst:** Emphasize data handling, verification, and output accuracy
+   - **general:** Emphasize safe AI usage and verification basics
+   - **manager:** Emphasize risk awareness, data sensitivity, and decision accountability
+   - Role adjusts emphasis and verbosity — all rules remain universal
+3. Read core governance: RULES.md (all 14 rules) and INTERACTION_PROTOCOL.md (message parsing and response protocol)
+4. Read `docs/PROGRESS.md` and `docs/TASKS.md` (if they exist)
+5. If `project_governance_path` is set in `.ai-gov.json`, read PROJECT_RULES.md and FORBIDDEN.md
+6. Ensure the current task is clearly understood before writing any code
+7. If any required file is missing (.ai-gov.json, PROGRESS.md, project governance), confirm with the user before proceeding
 
 ## Adoption Tier
 

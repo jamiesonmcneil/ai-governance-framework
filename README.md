@@ -18,9 +18,13 @@ There is no widely adopted standard for how AI tools should be used consistently
 
 AI output can be incorrect, incomplete, or misleading — verification is required for reliable results. This framework provides a structured approach to consistent behavior, verification, safe data handling, and controlled AI-assisted workflows — across any AI tool, any project, any team.
 
+**This framework applies to anyone using AI tools — not just developers.** Analysts, managers, HR, finance, marketing — anyone who types into an AI chat box.
+
 ## Quick Start
 
-If you want to try this immediately: copy the `templates/` folder into your project, configure `.ai-gov.json`, and start your AI tool. Full instructions and tiered adoption guide below.
+**New user?** Start with `USER_SETUP.md` — a 5-minute onboarding guide that covers everything you need, regardless of your role.
+
+**Setting up a project?** Copy the `templates/` folder into your project, configure `.ai-gov.json`, and start your AI tool. Full instructions and tiered adoption guide below.
 
 ## About
 
@@ -35,22 +39,28 @@ Maintained by Jamieson McNeil · by Suitethink
 
 ## Start Here
 
+**If you are a new user** — read `USER_SETUP.md`. It takes 5 minutes, covers all roles (developers, analysts, general users, managers), and tells you exactly what to do. Everything else is optional unless your role or team requires it.
+
+**If you are setting up a project or team** — continue reading below for the tiered adoption guide.
+
 You do not need to adopt the entire framework at once.
 
-Choose the path that matches how you use AI today:
+Choose the path that matches your project's needs:
 
 ### 1. Individual use
 Start with:
-- `SELF_GOVERNANCE.md`
-- training opt-out on your AI tools
-- placeholder data instead of real sensitive data
+- `USER_SETUP.md` (5-minute onboarding for any role)
+- `SELF_GOVERNANCE.md` (complete safety guide)
+- Training opt-out on your AI tools
+- Placeholder data instead of real sensitive data
 
 ### 2. Project use
 Add:
 - `RULES.md`
 - `INTERACTION_PROTOCOL.md`
 - `TRACKING.md`
-- `.ai-gov.json`
+- `.ai-gov.json` (project config)
+- `.ai-gov.user.json` (per-user config — gitignored, optional for non-developers)
 
 ### 3. Production or business use
 Add:
@@ -63,7 +73,7 @@ Add:
 
 Start with the smallest useful path and expand as your use of AI grows.
 
-You can begin with just `SELF_GOVERNANCE.md` and a minimal setup, then adopt additional controls over time.
+You can begin with just `USER_SETUP.md` and a minimal setup, then adopt additional controls over time.
 
 ---
 
@@ -138,6 +148,7 @@ This framework has **one core** and **many extensions**. The core lives here and
 ```
 THIS DIRECTORY (read-only, shared by all projects)
 /path/to/ai-governance-framework/
+  USER_SETUP.md           Start here — 5-minute onboarding for any role
   RULES.md                14 mandatory behavioral rules
   INTERACTION_PROTOCOL.md How to parse and respond to user messages
   FORBIDDEN.md            Universal prohibitions
@@ -151,10 +162,12 @@ THIS DIRECTORY (read-only, shared by all projects)
   COMPLIANCE.md           Regulatory alignment (NIST, ISO, OWASP, PIPEDA)
   ENCRYPTION.md           Encryption standards (at-rest, in-transit, key management)
   templates/              Starter files for new projects
+  examples/               Real-world setup and usage examples
 
 YOUR PROJECT (extends core — this is what you modify)
 /path/to/your-project/
-  .ai-gov.json                    Session config (credential storage, governance paths)
+  .ai-gov.json                    Project config (credential storage, governance paths)
+  .ai-gov.user.json               User config (role, tools — gitignored, per-user)
   CLAUDE.md                       AI tool entry point (references core + project governance)
   docs/PROGRESS.md                Active progress log
   docs/TASKS.md                   Outstanding work items
@@ -174,9 +187,10 @@ Every new AI session (Claude Code, Copilot chat, Cursor, etc.) must:
 1. **Read `.ai-gov.json`** in the working directory
 2. **If it doesn't exist:** Ask the user to answer the configuration questions (see below), create the file
 3. **If it exists:** Present the config summary and ask the user to confirm before proceeding
-4. **Read core governance** (RULES.md at minimum)
-5. **Read project governance** (if paths are configured in `.ai-gov.json`)
-6. **Read PROGRESS.md and TASKS.md** (if they exist)
+4. **Read `.ai-gov.user.json`** (if it exists) — use the user's role to adjust guidance emphasis and verbosity. Role does not restrict which rules apply — all rules remain universal
+5. **Read core governance** (RULES.md at minimum)
+6. **Read project governance** (if paths are configured in `.ai-gov.json`)
+7. **Read PROGRESS.md and TASKS.md** (if they exist)
 
 ### .ai-gov.json Configuration Questions
 
