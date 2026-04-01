@@ -53,7 +53,7 @@ We keep public releases stable and infrequent while allowing continuous refineme
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
 - **Semantic versions** (`v1.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-gov.json` schema. Breaking changes will always include migration notes.
 
-**Current stable release:** `v1.0.0` — Initial Public Release (March 2026)
+**Current stable release:** `v1.0.1` — Final Polished Release (April 2026)
 
 **Key principles**:
 - `.ai-gov.json` schema remains stable for the entire v1.x series.
