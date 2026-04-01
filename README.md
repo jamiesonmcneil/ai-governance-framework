@@ -1,14 +1,22 @@
 # AI Governance Framework
 
-**Version:** 1.0
+**Version:** 1.0.1
 **License:** MIT
 
-![Version](https://img.shields.io/badge/version-1.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Practical AI governance — focused on execution.
 
 Defines how AI is actually used, not just policy, risk, or compliance.
+
+**Quick Navigation**
+- New user? → `USER_SETUP.md` (5-minute onboarding for any role)
+- Core safety boundary → `SELF_GOVERNANCE.md` (read this first)
+- Daily behavioral rules → `RULES.md`
+- How to interact with AI → `INTERACTION_PROTOCOL.md`
+- Session & project continuity → `TRACKING.md`
+- Production safety → `PRODUCTION_SAFETY.md`
 
 ## Why This Exists
 
@@ -34,6 +42,25 @@ This framework is published as an independent open-source project. It may be ado
 
 Created by Jamieson McNeil
 Maintained by Jamieson McNeil · by Suitethink
+
+---
+
+## Versioning Policy
+
+We keep public releases stable and infrequent while allowing continuous refinement on the main branch.
+
+- **Commits**: Ongoing iteration — wording, clarity, and small refinements.
+- **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
+- **Semantic versions** (`v1.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-gov.json` schema. Breaking changes will always include migration notes.
+
+**Current stable release:** `v1.0.0` — Initial Public Release (March 2026)
+
+**Key principles**:
+- `.ai-gov.json` schema remains stable for the entire v1.x series.
+- Full commit history is preserved (no more resets).
+- A lightweight `CHANGELOG.md` tracks notable changes.
+
+This approach optimizes for traceability, stability, and user confidence.
 
 ---
 
@@ -138,6 +165,26 @@ Use this when working with real users, real data, or production systems.
 Sensitive data may be used with AI only in approved enterprise or self-hosted environments — never in public AI tools.
 
 **The tier determines your entry point, not the strictness of the rules. Every rule that applies at your tier is mandatory.**
+
+---
+
+## For Teams and Small Organizations
+
+This framework scales naturally from individual use to small teams with almost no added process.
+
+**Recommended team practices:**
+- Every new team member completes `USER_SETUP.md` (5-minute onboarding) in their first week.
+- All AI-assisted work on shared projects uses at least **Tier 2** (project-level governance with `.ai-gov.json` and tracking files).
+- Developers follow `RULES.md` and the Session Start Protocol.
+- Managers treat AI output as "draft / assisted" unless it has passed the verification hierarchy in `QA_STANDARDS.md`.
+
+**Lightweight tracking:**
+- Use `.ai-gov.user.json` (role + tools) + a simple acknowledgment (Slack message, ticket, or shared doc) to confirm onboarding.
+- Optional monthly 10-minute review: pick one or two recent AI sessions and check core rule adherence.
+
+If repeated onboarding gaps or ownership questions appear, designate a lightweight "AI Governance Champion" per team. A full `TEAM_ADOPTION.md` will only be added later if real usage demonstrates the need.
+
+The focus remains on **behavior and verification**, not bureaucracy.
 
 ---
 
