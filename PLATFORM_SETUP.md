@@ -55,9 +55,9 @@ Every AI entry-point file (CLAUDE.md, GROK.md, CURSOR.md, etc.) enforces the sam
 3. **Read** governance files from each active layer:
    - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
    - **Org:** All files at the org layer path (if enabled)
-   - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md (if they exist)
-   - **User:** Role-based preferences (if present)
-4. **Read** `.ai-governance/docs/PROGRESS.md` and `TASKS.md` (if they exist)
+   - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md, PATTERNS.md (if they exist)
+   - **User:** Role-based preferences (if the user layer exists)
+4. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist)
 5. **Output** the confirmation block:
 
 ```

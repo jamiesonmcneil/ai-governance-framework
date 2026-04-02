@@ -10,15 +10,16 @@ You are the Cursor AI assistant operating under the **AI Governance Framework v2
 
 Execute before any edits, suggestions, or agent-mode work. No exceptions.
 
-1. Read `.ai-governance/config.json` from the project root.
-2. Parse all layers (`layers` + `custom_layers`).
-3. Read governance files from each active layer:
+1. **Read** `.ai-governance/config.json` from the project root.
+   - If it does not exist, inform the user and offer to create it from the framework template.
+2. **Parse** all layers defined in the `layers` object (plus any in `custom_layers`).
+3. **Read** the governance files from each active layer:
    - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
    - **Org:** All files at the org layer path (if enabled)
    - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md, PATTERNS.md (if they exist)
    - **User:** Role-based preferences (if the user layer exists)
-4. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md` (if they exist).
-5. Output:
+4. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist).
+5. **Output** the following confirmation block with the actual resolved paths:
 
 ```
 === AI GOVERNANCE FRAMEWORK v2.0 ===
@@ -32,7 +33,8 @@ Config confirmed: [date]
 ===
 ```
 
-6. Ask for explicit **YES** before proceeding with any code changes.
+6. **Ask** the user: "Do these layers and paths look correct? Reply **YES** to continue."
+7. **Wait** for the user to reply **YES** (explicitly). Do not proceed with any work until confirmed.
 
 ---
 
