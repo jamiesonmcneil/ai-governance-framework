@@ -41,13 +41,14 @@ These steps reflect the governance framework's expected workflow.
 
 ```
 basic-project/
-├── .ai-governance/config.json              ← Project configuration (credentials, governance paths)
-├── CLAUDE.md                  ← AI session instructions (read at session start)
-├── docs/
-│   ├── PROGRESS.md            ← What was done, when, and why
-│   └── TASKS.md               ← Outstanding work items
-└── .ai-governance/project/
-    ├── PROJECT_RULES.md       ← Rules specific to this project
-    ├── FORBIDDEN.md           ← Prohibitions specific to this project
-    └── CONVENTIONS.md         ← Naming and style conventions
+├── .ai-governance/
+│   ├── config.json            ← Single source of truth (layer paths, settings)
+│   ├── project/               ← Project-specific rules (team layer)
+│   │   ├── PROJECT_RULES.md
+│   │   ├── FORBIDDEN.md
+│   │   └── CONVENTIONS.md
+│   └── docs/                  ← Tracking files
+│       ├── PROGRESS.md
+│       └── TASKS.md
+└── CLAUDE.md                  ← AI session instructions (read at session start)
 ```

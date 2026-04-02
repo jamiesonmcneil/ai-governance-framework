@@ -1,0 +1,17 @@
+{
+  "schema_version": "2.0",
+  "project_name": "Lightweight Project Example",
+  "layers": {
+    "core": {
+      "path": "/path/to/ai-governance-framework",
+      "immutable": true,
+      "description": "Universal safety and behavioral rules"
+    }
+  },
+  "custom_layers": {},
+  "credential_storage": "file",
+  "compliance_frameworks": [],
+  "production_environment": null,
+  "ai_tools": ["claude-code"],
+  "confirmed_date": "2026-04-02"
+}

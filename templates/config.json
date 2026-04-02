@@ -1,4 +1,5 @@
 {
+  "_description": "AI Governance Framework v2.0 — Single source of truth for all governance layers. Core is immutable and always highest precedence.",
   "schema_version": "2.0",
   "project_name": "Your Project Name",
 
@@ -24,7 +25,12 @@
     }
   },
 
-  "custom_layers": {},
+  "custom_layers": {
+    "_example_legal": {
+      "path": ".ai-governance/legal",
+      "description": "Example: legal/compliance team rules (delete this example, add your own)"
+    }
+  },
 
   "precedence_note": "Core (immutable, always highest) → Org → Project → custom layers in listed order → User (lowest). If any conflict, the stricter rule wins.",
 

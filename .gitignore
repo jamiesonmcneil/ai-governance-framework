@@ -1,3 +1,6 @@
 .pids/
 logs/
 .DS_Store
+
+# AI Governance Framework v2.0 — User layer
+.ai-governance/user/

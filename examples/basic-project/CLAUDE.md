@@ -6,14 +6,25 @@
 - **Session config:** `.ai-governance/config.json` (read at session start, confirm with user)
 - **Project governance:** `./.ai-governance/project/`
 
-## Session Start
+## Mandatory Session Start Protocol
 
-1. Read `.ai-governance/config.json` — present config, ask user to confirm
-2. Read core governance: RULES.md (all 14 rules) and INTERACTION_PROTOCOL.md
-3. Read `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md`
+1. Read `.ai-governance/config.json` — parse all layers
+2. Read governance files from each active layer (Core at minimum: RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md)
+3. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md`
 4. Read `.ai-governance/project/PROJECT_RULES.md` and `FORBIDDEN.md`
-5. Understand current task before writing any code
-6. If any required file is missing, confirm with the user before proceeding
+5. Output the confirmation block:
+
+```
+=== AI GOVERNANCE FRAMEWORK v2.0 ===
+Active Layers:
+  Core    → [path] (immutable)
+  Project → [path]
+Precedence: Core (immutable) → Project
+===
+```
+
+6. Ask for explicit **YES** before proceeding
+7. Understand current task before writing any code
 
 ## Key Principles
 

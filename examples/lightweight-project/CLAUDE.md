@@ -12,12 +12,13 @@
 - Match AI execution environment to data sensitivity. Never process sensitive data through public AI.
 - AI assists decisions — humans are accountable. AI output is not the sole basis for high-impact decisions.
 
-## Session Start
+## Session Start Protocol
 
-1. Read `.ai-governance/config.json` — confirm with user
-2. Read core RULES.md and INTERACTION_PROTOCOL.md
-3. Read `PROGRESS.md` for current state
-4. Ensure the task is clearly understood before starting work
+1. Read `.ai-governance/config.json` — parse layers
+2. Read Core: RULES.md, SELF_GOVERNANCE.md, INTERACTION_PROTOCOL.md
+3. Output confirmation block with active layers, ask for **YES**
+4. Read `PROGRESS.md` for current state
+5. Ensure the task is clearly understood before starting work
 
 ## Project Overview
 
