@@ -71,6 +71,45 @@ From `SELF_GOVERNANCE.md`:
 
 ---
 
+## Verification Hierarchy
+
+From `QA_STANDARDS.md` — "it compiles" is NOT verification:
+
+| Level | Description | Sufficient? |
+|-------|-------------|-------------|
+| 1 | Code compiles | No |
+| 2 | No lint errors | No |
+| 3 | Unit tests pass | Partial |
+| 4 | Integration tests pass | Partial |
+| 5 | End-to-end workflow verified | Yes |
+| 6 | User acceptance confirmed | Yes |
+
+---
+
+## Production Safety
+
+From `PRODUCTION_SAFETY.md`:
+
+Any production modification requires:
+1. State: "This will modify PRODUCTION [system]"
+2. List exactly what will change
+3. Ask: "Type CONFIRM PRODUCTION to proceed"
+4. Only the exact phrase proceeds — "yes" or "ok" does not
+
+---
+
+## Interaction Protocol
+
+From `INTERACTION_PROTOCOL.md`:
+
+1. **Parse** — extract all tasks, questions, discussion items
+2. **Execute tasks** — complete all work items
+3. **Answer questions** — together at the end, not inline
+4. **Address discussion items** — provide analysis, ask for decisions
+5. **Verify** — confirm nothing was skipped
+
+---
+
 ## Tracking
 
 | File | Location | Update Frequency |

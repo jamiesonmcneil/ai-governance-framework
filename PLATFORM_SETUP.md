@@ -69,19 +69,40 @@ Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automati
 
 ## Grok (xAI)
 
+### Grok (Chat / API)
+
 **Entry-point file:** `GROK.md` in the project root
 
-Copy `templates/GROK.md` and customize. When using Grok in a project context, paste the Session Start Protocol at the beginning of each session. Grok will read `config.json`, list layers, and confirm before proceeding.
+Copy `templates/GROK.md` and customize. When using Grok in a project context, paste the Session Start Protocol at the beginning of each session. The protocol requires Grok to:
+
+1. Read `.ai-governance/config.json`
+2. Parse all layers (`layers` + `custom_layers`)
+3. Read governance files from each active layer (Core: RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md)
+4. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md`
+5. Output a confirmation block listing every active layer with exact paths
+6. Ask for explicit **YES** before proceeding
+
+**Note:** Grok does not have native project-file loading. Paste the `GROK.md` content at the start of each session, or use it as a system prompt via the xAI API. The entry-point file includes all 14 core rules, the verification hierarchy, production safety protocol, and interaction protocol references.
 
 ---
 
 ## Cursor
 
+### Cursor IDE (Agent / Composer / Chat)
+
 **Entry-point file:** `CURSOR.md` in the project root (or `.cursorrules`)
 
-Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically.
+Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically. The Session Start Protocol requires Cursor to:
 
-For Cursor Composer and Agent mode, the governance framework is enforced through the Session Start Protocol in the entry-point file — read config, confirm layers, then proceed.
+1. Read `.ai-governance/config.json`
+2. Parse all layers and read governance files from each (Core at minimum)
+3. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md`
+4. Output a confirmation block listing every active layer with exact paths
+5. Ask for explicit **YES** before proceeding with any code changes
+
+The entry-point file includes IDE-specific editing rules (read before editing, use existing components, apply changes to all files, no hard-coded values, security in every suggestion) in addition to the full core rules, verification hierarchy, and production safety protocol.
+
+For Cursor Composer and Agent mode, the same governance applies — the Session Start Protocol runs before any multi-file edits or autonomous actions.
 
 ---
 
