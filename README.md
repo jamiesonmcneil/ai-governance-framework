@@ -1,9 +1,9 @@
 # AI Governance Framework
 
-**Version:** 1.0.1
+**Version:** 2.0.0
 **License:** MIT
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Practical AI governance — focused on execution.
@@ -32,7 +32,7 @@ AI output can be incorrect, incomplete, or misleading — verification is requir
 
 **New user?** Start with `USER_SETUP.md` — a 5-minute onboarding guide that covers everything you need, regardless of your role.
 
-**Setting up a project?** Copy the `templates/` folder into your project, configure `.ai-gov.json`, and start your AI tool. Full instructions and tiered adoption guide below.
+**Setting up a project?** Create `.ai-governance/config.json` in your project root and copy an entry-point template (CLAUDE.md, GROK.md, etc.). Full instructions and tiered adoption guide below.
 
 ## About
 
@@ -53,10 +53,10 @@ We keep public releases stable and infrequent while allowing continuous refineme
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
 - **Semantic versions** (`v1.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-gov.json` schema. Breaking changes will always include migration notes.
 
-**Current stable release:** `v1.0.1` — Final Polished Release (April 2026)
+**Current stable release:** `v2.0.0` — Centralized Layer Architecture (April 2026)
 
 **Key principles**:
-- `.ai-gov.json` schema remains stable for the entire v1.x series.
+- `.ai-governance/config.json` schema remains stable for the entire v2.x series.
 - Full commit history is preserved (no more resets).
 - A lightweight `CHANGELOG.md` tracks notable changes.
 
@@ -86,8 +86,8 @@ Add:
 - `RULES.md`
 - `INTERACTION_PROTOCOL.md`
 - `TRACKING.md`
-- `.ai-gov.json` (project config)
-- `.ai-gov.user.json` (per-user config — gitignored, optional for non-developers)
+- `.ai-governance/config.json` (project config — single source of truth)
+- User layer (personal preferences — gitignored, optional)
 
 ### 3. Production or business use
 Add:
@@ -174,12 +174,12 @@ This framework scales naturally from individual use to small teams with almost n
 
 **Recommended team practices:**
 - Every new team member completes `USER_SETUP.md` (5-minute onboarding) in their first week.
-- All AI-assisted work on shared projects uses at least **Tier 2** (project-level governance with `.ai-gov.json` and tracking files).
+- All AI-assisted work on shared projects uses at least **Tier 2** (project-level governance with `.ai-governance/config.json` and tracking files).
 - Developers follow `RULES.md` and the Session Start Protocol.
 - Managers treat AI output as "draft / assisted" unless it has passed the verification hierarchy in `QA_STANDARDS.md`.
 
 **Lightweight tracking:**
-- Use `.ai-gov.user.json` (role + tools) + a simple acknowledgment (Slack message, ticket, or shared doc) to confirm onboarding.
+- Use the User layer (`.ai-governance/user/`) for role + tool preferences, plus a simple acknowledgment (Slack message, ticket, or shared doc) to confirm onboarding.
 - Optional monthly 10-minute review: pick one or two recent AI sessions and check core rule adherence.
 
 If repeated onboarding gaps or ownership questions appear, designate a lightweight "AI Governance Champion" per team. A full `TEAM_ADOPTION.md` will only be added later if real usage demonstrates the need.
@@ -188,93 +188,138 @@ The focus remains on **behavior and verification**, not bureaucracy.
 
 ---
 
-## How It Works
+## How It Works (v2.0)
 
-This framework has **one core** and **many extensions**. The core lives here and is **never modified** — projects only extend it.
+This framework has **one core** and **many extensions**. The core lives in this repository and is **never modified** — projects only extend it through additional layers.
+
+### Framework Repository (this repo — the Core distribution)
 
 ```
-THIS DIRECTORY (read-only, shared by all projects)
 /path/to/ai-governance-framework/
-  USER_SETUP.md           Start here — 5-minute onboarding for any role
-  RULES.md                14 mandatory behavioral rules
+  RULES.md                14 mandatory behavioral rules (immutable)
+  SELF_GOVERNANCE.md      What NOT to put into AI tools (immutable)
+  FORBIDDEN.md            Universal prohibitions (immutable)
   INTERACTION_PROTOCOL.md How to parse and respond to user messages
-  FORBIDDEN.md            Universal prohibitions
-  PATTERNS.md             Universal code patterns
-  CREDENTIAL_SECURITY.md  Context-aware credential handling + DDL
-  PRODUCTION_SAFETY.md    CONFIRM PRODUCTION protocol
+  PRODUCTION_SAFETY.md    CONFIRM PRODUCTION protocol (immutable)
   QA_STANDARDS.md         Verification hierarchy
+  CREDENTIAL_SECURITY.md  Context-aware credential handling + DDL
   TRACKING.md             PROGRESS/TASKS/HISTORY standards
-  SELF_GOVERNANCE.md      What NOT to put into AI tools
-  AI_ENVIRONMENTS.md      Execution environments and layered AI processing
+  AI_ENVIRONMENTS.md      Execution environments and layered processing
+  ENCRYPTION.md           Encryption standards (at-rest, in-transit, key mgmt)
   COMPLIANCE.md           Regulatory alignment (NIST, ISO, OWASP, PIPEDA)
-  ENCRYPTION.md           Encryption standards (at-rest, in-transit, key management)
+  USER_SETUP.md           5-minute onboarding for any role
   templates/              Starter files for new projects
   examples/               Real-world setup and usage examples
-
-YOUR PROJECT (extends core — this is what you modify)
-/path/to/your-project/
-  .ai-gov.json                    Project config (credential storage, governance paths)
-  .ai-gov.user.json               User config (role, tools — gitignored, per-user)
-  CLAUDE.md                       AI tool entry point (references core + project governance)
-  docs/PROGRESS.md                Active progress log
-  docs/TASKS.md                   Outstanding work items
-  project-governance/             Project-specific extensions (optional)
-    PROJECT_RULES.md              Rules that ADD to core (never override)
-    FORBIDDEN.md                  Project-specific prohibitions
-    CONVENTIONS.md                Naming, styling, file structure OVERRIDES
-    PATTERNS.md                   Project-specific code patterns
-    TECH_STACK.md                 Approved technologies
-    DEFINITION_OF_DONE.md         Project-specific DoD checklist
 ```
 
-## Session Start Protocol
+### Your Project (extends core)
 
-Every new AI session (Claude Code, Copilot chat, Cursor, etc.) must:
+```
+your-project-root/
+├── .ai-governance/                     ← REQUIRED entry point
+│   ├── config.json                     ← REQUIRED: single source of truth
+│   ├── core/                           ← optional: symlink to central Core
+│   ├── org/                            ← optional: symlink to central Org
+│   ├── project/                        ← project-specific rules (team layer)
+│   │   ├── PROJECT_RULES.md
+│   │   ├── FORBIDDEN.md
+│   │   ├── CONVENTIONS.md
+│   │   ├── PATTERNS.md
+│   │   ├── TECH_STACK.md
+│   │   └── DEFINITION_OF_DONE.md
+│   ├── user/                           ← personal preferences (gitignored)
+│   └── docs/                           ← PROGRESS.md, TASKS.md
+├── CLAUDE.md (or GROK.md, CURSOR.md)   ← REQUIRED: AI entry point
+└── ... (your code)
+```
 
-1. **Read `.ai-gov.json`** in the working directory
-2. **If it doesn't exist:** Ask the user to answer the configuration questions (see below), create the file
-3. **If it exists:** Present the config summary and ask the user to confirm before proceeding
-4. **Read `.ai-gov.user.json`** (if it exists) — use the user's role to adjust guidance emphasis and verbosity. Role does not restrict which rules apply — all rules remain universal
-5. **Read core governance** (RULES.md at minimum)
-6. **Read project governance** (if paths are configured in `.ai-gov.json`)
-7. **Read PROGRESS.md and TASKS.md** (if they exist)
+**Minimum required files per project:**
+- `.ai-governance/` folder
+- `.ai-governance/config.json`
+- One AI entry-point file (CLAUDE.md, GROK.md, CURSOR.md, etc.)
 
-### .ai-gov.json Configuration Questions
+Everything else is created as needed.
 
-When starting a new project, the AI asks:
+### Layer Definitions & Precedence
 
-| Question | Key | Example Values |
-|----------|-----|---------------|
-| How should credentials be stored? | `credential_storage` | `"postgres"`, `"file"`, `"secrets_manager"` |
-| Path to core governance? | `core_governance_path` | `"/path/to/ai-governance-framework"` |
-| Path to org governance? (if any) | `org_governance_path` | `null` or path |
-| Path to project governance? | `project_governance_path` | `"./project-governance"` or `null` |
-| Which compliance frameworks apply? | `compliance_frameworks` | `["hipaa", "soc2"]` or `[]` |
-| Is there a production environment? | `production_environment` | `{ "type": "aws_ec2", "host": "..." }` or `null` |
-| What AI execution environment is in use? | `ai_execution_environment` | `{ "type": "public" }`, `"self_hosted"`, `"layered"` |
-| Which AI tools does the team use? | `ai_tools` | `["claude-code", "copilot"]` |
+| Layer | Scope | Immutable | Typical Location | Precedence |
+|-------|-------|-----------|------------------|------------|
+| **Core** | Universal safety rules | Yes | Central shared repo | Highest |
+| **Org** | Company-wide policies | No | Central shared location | 2nd |
+| **Project** | Project/team rules | No | `.ai-governance/project/` | 3rd |
+| **Custom** | Any extra layers | No | As defined in config | As listed |
+| **User** | Personal preferences | No | `~/.ai-governance/user/` (gitignored) | Lowest |
 
-### Example .ai-gov.json
+**Core is always highest and cannot be weakened by any other layer.** If any conflict exists between layers, the stricter rule wins.
+
+The **Project layer also serves as the team layer.** This is sufficient for most organizations. If you need more granularity (division, department, legal), add custom layers in `config.json`.
+
+### Custom Layers
+
+Custom layers are fully supported. Add them in `config.json` under `custom_layers`:
 
 ```json
 {
-  "schema_version": "1.0",
-  "credential_storage": "postgres",
-  "core_governance_path": "/path/to/ai-governance-framework",
-  "org_governance_path": null,
-  "project_governance_path": "./project-governance",
-  "compliance_frameworks": ["hipaa", "ai-governance", "multi-tenant"],
-  "production_environment": {
-    "type": "aws_ec2",
-    "host": "your-server.example.com",
-    "requires_confirm_production": true
+  "custom_layers": {
+    "legal": {
+      "path": "/path/to/legal-governance",
+      "description": "Legal and compliance team requirements"
+    }
+  }
+}
+```
+
+Custom layers load after Core/Org/Project and before User, in the exact order listed.
+
+---
+
+## Session Start Protocol (v2.0)
+
+Every new AI session (Claude Code, Grok, Cursor, Copilot, etc.) must:
+
+1. **Read** `.ai-governance/config.json` in the project root
+2. **If it doesn't exist:** Inform the user and offer to create it from the template
+3. **Parse** all layers defined in `layers` and `custom_layers`
+4. **Read** governance files from each active layer (Core at minimum)
+5. **Read** `.ai-governance/docs/PROGRESS.md` and `TASKS.md` (if they exist)
+6. **Output** a confirmation block listing every active layer + exact path
+7. **Ask** the user for explicit **YES** before proceeding with any work
+
+The entry-point file (CLAUDE.md, GROK.md, etc.) contains the full protocol instructions for each AI tool.
+
+### Example config.json
+
+```json
+{
+  "schema_version": "2.0",
+  "project_name": "My Project",
+  "layers": {
+    "core": {
+      "path": "/path/to/ai-governance-framework",
+      "immutable": true,
+      "description": "Universal safety and behavioral rules"
+    },
+    "org": {
+      "path": "/path/to/org-governance",
+      "enabled": true,
+      "description": "Organization-wide policies"
+    },
+    "project": {
+      "path": ".ai-governance/project",
+      "description": "Project-specific rules (team layer)"
+    },
+    "user": {
+      "path": "~/.ai-governance/user",
+      "gitignored": true,
+      "description": "Personal preferences (cannot weaken rules)"
+    }
   },
-  "ai_execution_environment": {
-    "type": "layered",
-    "notes": "PII scrubbing via local cascade, external AI for reasoning"
-  },
+  "custom_layers": {},
+  "credential_storage": "file",
+  "compliance_frameworks": [],
+  "production_environment": null,
   "ai_tools": ["claude-code"],
-  "confirmed_date": "2026-03-24"
+  "confirmed_date": "2026-04-02"
 }
 ```
 
@@ -298,8 +343,8 @@ Project-level governance may NOT weaken, redefine, or create exceptions to these
 
 Project-level governance may add stricter controls:
 
-- `project-governance/PROJECT_RULES.md` — add project-specific rules
-- `project-governance/FORBIDDEN.md` — add project-specific prohibitions
+- `.ai-governance/project/PROJECT_RULES.md` — add project-specific rules
+- `.ai-governance/project/FORBIDDEN.md` — add project-specific prohibitions
 - Additional validation, approval, or compliance requirements
 
 Project-level governance may NOT remove or weaken core requirements.
@@ -315,7 +360,7 @@ Projects select how rules are implemented — the rule stays the same, the imple
 
 ### 4. OVERRIDABLE (local conventions only)
 
-Projects may override local conventions via `project-governance/CONVENTIONS.md`:
+Projects may override local conventions via `.ai-governance/project/CONVENTIONS.md`:
 
 - Naming conventions, file structure, styling approach
 - Branch naming, commit format
@@ -344,18 +389,37 @@ These must NOT conflict with security requirements, verification standards, or c
 ## Quick Start for a New Project
 
 ```bash
-# 1. Copy templates to your project
-cp /path/to/ai-governance-framework/templates/CLAUDE.md ./CLAUDE.md
-cp /path/to/ai-governance-framework/templates/.ai-gov.json ./.ai-gov.json
-mkdir -p docs project-governance
-cp /path/to/ai-governance-framework/templates/PROGRESS.md ./docs/PROGRESS.md
-cp /path/to/ai-governance-framework/templates/TASKS.md ./docs/TASKS.md
+# 1. Create the governance folder
+mkdir -p .ai-governance/project .ai-governance/docs
 
-# 2. Edit .ai-gov.json with your project's answers
-# 3. Edit CLAUDE.md with your project context
-# 4. Optionally create project-governance/ files for project-specific rules
-# 5. Start your AI tool — it reads .ai-gov.json and confirms config with you
+# 2. Copy the config template
+cp /path/to/ai-governance-framework/templates/config.json .ai-governance/config.json
+
+# 3. Copy the entry-point template for your AI tool
+cp /path/to/ai-governance-framework/templates/CLAUDE.md ./CLAUDE.md
+# (or GROK.md, CURSOR.md, ENTRY_POINT_TEMPLATE.md)
+
+# 4. Copy tracking templates
+cp /path/to/ai-governance-framework/templates/PROGRESS.md .ai-governance/docs/PROGRESS.md
+cp /path/to/ai-governance-framework/templates/TASKS.md .ai-governance/docs/TASKS.md
+
+# 5. Edit config.json — set your Core path, Org path, and project details
+# 6. Edit CLAUDE.md — add your project overview and specific rules
+# 7. Add .ai-governance/user/ to your .gitignore
+# 8. Start your AI tool — it reads config.json and confirms layers with you
 ```
+
+## Migration from v1.x to v2.0
+
+1. Create `.ai-governance/` folder at project root
+2. Move existing `project-governance/` contents into `.ai-governance/project/`
+3. Move `docs/PROGRESS.md` and `docs/TASKS.md` into `.ai-governance/docs/`
+4. Copy `templates/config.json` → `.ai-governance/config.json` and update the layer paths
+5. Replace your old CLAUDE.md with the v2.0 version from `templates/`
+6. Add `.ai-governance/user/` to `.gitignore`
+7. Delete old `.ai-gov.json` and `.ai-gov.user.json` (deprecated)
+
+The framework is backward-compatible during transition — old files will still be found until you delete them.
 
 ## Standards Alignment & References
 

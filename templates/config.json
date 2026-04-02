@@ -1,0 +1,39 @@
+{
+  "schema_version": "2.0",
+  "project_name": "Your Project Name",
+
+  "layers": {
+    "core": {
+      "path": "/path/to/ai-governance-framework",
+      "immutable": true,
+      "description": "Universal safety and behavioral rules (never modify)"
+    },
+    "org": {
+      "path": "/path/to/your-org-governance",
+      "enabled": true,
+      "description": "Organization-wide policies and compliance standards"
+    },
+    "project": {
+      "path": ".ai-governance/project",
+      "description": "Project-specific rules (also serves as team layer)"
+    },
+    "user": {
+      "path": "~/.ai-governance/user",
+      "gitignored": true,
+      "description": "Personal preferences and role-based settings (cannot weaken rules)"
+    }
+  },
+
+  "custom_layers": {},
+
+  "precedence_note": "Core (immutable, always highest) → Org → Project → custom layers in listed order → User (lowest). If any conflict, the stricter rule wins.",
+
+  "credential_storage": "file",
+  "compliance_frameworks": [],
+  "production_environment": null,
+  "ai_execution_environment": {
+    "type": "public"
+  },
+  "ai_tools": ["claude-code"],
+  "confirmed_date": null
+}

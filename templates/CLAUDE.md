@@ -1,47 +1,136 @@
 # [Project Name]
 
-## Governance
+## AI Governance Framework v2.0 — Claude Session Initializer
 
-- **Core governance:** `/path/to/ai-governance-framework/` — RULES.md (14 rules), INTERACTION_PROTOCOL.md, FORBIDDEN.md, PATTERNS.md, SELF_GOVERNANCE.md, AI_ENVIRONMENTS.md
-- **Session config:** `.ai-gov.json` (read at session start, confirm with user)
-- **Project governance:** `./project-governance/` (if exists — extends core, never overrides)
+This project operates under the **AI Governance Framework v2.0**. All governance rules are mandatory and non-negotiable.
 
-## Session Start
+---
 
-1. Read `.ai-gov.json` — if it exists, present config and ask user to confirm. If it doesn't exist, ask the configuration questions (see core README.md) and create it.
-2. If `.ai-gov.user.json` exists, read it. Use the user's role to adjust guidance:
-   - **developer:** Full governance — emphasize rules, patterns, verification, production safety
-   - **analyst:** Emphasize data handling, verification, and output accuracy
-   - **general:** Emphasize safe AI usage and verification basics
-   - **manager:** Emphasize risk awareness, data sensitivity, and decision accountability
-   - Role adjusts emphasis and verbosity — all rules remain universal
-3. Read core governance: RULES.md (all 14 rules) and INTERACTION_PROTOCOL.md (message parsing and response protocol)
-4. Read `docs/PROGRESS.md` and `docs/TASKS.md` (if they exist)
-5. If `project_governance_path` is set in `.ai-gov.json`, read PROJECT_RULES.md and FORBIDDEN.md
-6. Ensure the current task is clearly understood before writing any code
-7. If any required file is missing (.ai-gov.json, PROGRESS.md, project governance), confirm with the user before proceeding
+## Mandatory Session Start Protocol
+
+**Execute this protocol at the start of every session, before any other work.**
+
+1. **Read** `.ai-governance/config.json` from the project root.
+   - If it does not exist, inform the user and offer to create it from the framework template.
+2. **Parse** all layers defined in the `layers` object (plus any in `custom_layers`).
+3. **Read** the governance files from each active layer:
+   - **Core:** RULES.md (all rules), SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md
+   - **Org:** All files at the org layer path (if enabled)
+   - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md, PATTERNS.md (if they exist)
+   - **User:** Role-based preferences (if the user layer exists)
+4. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist).
+5. **Output** the following confirmation block with the actual resolved paths:
+
+```
+=== AI GOVERNANCE FRAMEWORK v2.0 ===
+Active Layers:
+  Core    → [resolved path] (immutable)
+  Org     → [resolved path]
+  Project → [resolved path]
+  User    → [resolved path]
+Precedence: Core (immutable) → Org → Project → User
+Config confirmed: [date from config]
+===
+```
+
+6. **Ask** the user: "Do these layers and paths look correct? Reply YES to continue."
+7. **Wait** for the user to reply **YES** (explicitly). Do not proceed with any work until confirmed.
+
+---
+
+## Core Rules (Always Active)
+
+These rules are immutable. No layer may weaken, override, or create exceptions to them.
+
+- **Rule 1:** Never claim completion without end-to-end verification
+- **Rule 2:** Track ALL user requests — never forget items
+- **Rule 3:** Document as you work — not after
+- **Rule 4:** Ask when uncertain — never assume or guess
+- **Rule 5:** Answer questions at the end — not inline
+- **Rule 6:** No hard-coded values — database or config only
+- **Rule 7:** Use existing components — never duplicate
+- **Rule 8:** Security first — parameterized queries, no secrets in prompts, OWASP LLM Top 10
+- **Rule 9:** Production safety — CONFIRM PRODUCTION protocol required
+- **Rule 10:** Never revert working code
+- **Rule 11:** Apply changes to all relevant files
+- **Rule 12:** Follow established coding standards
+- **Rule 13:** Writing style — first person singular ("I" not "we")
+- **Rule 14:** Session protocol — start, during, end procedures
+
+Full details: `RULES.md` in the Core layer.
+
+---
+
+## Safety Boundary
+
+Before every session, internalize the safety boundary from `SELF_GOVERNANCE.md`:
+
+- Never paste credentials, API keys, PII, or proprietary algorithms into AI prompts
+- Treat ALL AI-generated code as untrusted input
+- Match AI execution environment to data sensitivity
+- Use only approved tools and accounts for work data
+
+---
+
+## Verification Hierarchy
+
+From `QA_STANDARDS.md` — "it compiles" is NOT verification:
+
+| Level | Description | Sufficient? |
+|-------|-------------|-------------|
+| 1 | Code compiles | No |
+| 2 | No lint errors | No |
+| 3 | Unit tests pass | Partial |
+| 4 | Integration tests pass | Partial |
+| 5 | End-to-end workflow verified | Yes |
+| 6 | User acceptance confirmed | Yes |
+
+Minimum for claiming completion: Level 5 (end-to-end workflow).
+
+---
+
+## Production Safety
+
+From `PRODUCTION_SAFETY.md`:
+
+Before ANY production operation, you must:
+1. State: "This will modify PRODUCTION [system]"
+2. List exactly what will change
+3. Ask: "Type CONFIRM PRODUCTION to proceed"
+4. Wait for the exact phrase — "yes", "ok", "do it" are NOT sufficient
+
+---
+
+## Interaction Protocol
+
+From `INTERACTION_PROTOCOL.md`:
+
+For every user message:
+1. **Parse** — extract all tasks, questions, and discussion items
+2. **Execute tasks** — complete all work items
+3. **Answer questions** — together at the end, not inline
+4. **Address discussion items** — provide analysis, ask for decisions
+5. **Verify** — confirm nothing was skipped before responding
+
+---
+
+## Tracking
+
+| File | Location | Purpose | Update Frequency |
+|------|----------|---------|-----------------|
+| PROGRESS.md | `.ai-governance/docs/` | Active work log | After each completed task |
+| TASKS.md | `.ai-governance/docs/` | Outstanding items | As discovered/completed |
+
+---
 
 ## Adoption Tier
 
 This project uses **Tier [1/2/3]** governance:
-- **Tier 1 (Personal):** SELF_GOVERNANCE.md + disable AI training + use placeholders
-- **Tier 2 (Project):** + RULES.md + TRACKING.md + .ai-gov.json + project governance
-- **Tier 3 (Production):** + PRODUCTION_SAFETY.md + CREDENTIAL_SECURITY.md + QA_STANDARDS.md + COMPLIANCE.md
+- **Tier 1 (Personal):** SELF_GOVERNANCE.md + disable AI training + placeholders
+- **Tier 2 (Project):** + RULES.md + TRACKING.md + config.json + project layer
+- **Tier 3 (Production):** + PRODUCTION_SAFETY.md + CREDENTIAL_SECURITY.md + QA_STANDARDS.md
 
-## Tracking Files
-
-| File | Purpose | Update Frequency |
-|------|---------|-----------------|
-| `docs/PROGRESS.md` | Active progress log | After each completed task |
-| `docs/TASKS.md` | Outstanding work items | As items discovered/completed |
-
-For lightweight projects (single session), a single PROGRESS.md combining progress and tasks is acceptable. Migrate to full tracking if the project grows beyond one session.
-
-## Key Principles
-
-- Use only approved tools and accounts for work data — no personal AI accounts or unapproved extensions
-- Match AI execution environment to data sensitivity — never process sensitive data through public AI
-- AI assists decisions — humans are accountable for outcomes
+---
 
 ## Project Overview
 
@@ -49,4 +138,4 @@ For lightweight projects (single session), a single PROGRESS.md combining progre
 
 ## Project-Specific Rules
 
-[Add project-specific rules here, or reference ./project-governance/PROJECT_RULES.md]
+[Add project-specific rules here, or reference .ai-governance/project/PROJECT_RULES.md]

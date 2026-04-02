@@ -1,4 +1,7 @@
-# AI Governance — user-specific config (never commit)
+# AI Governance Framework v2.0 — User layer (never commit)
+.ai-governance/user/
+
+# Deprecated v1.x user config (safe to delete)
 .ai-gov.user.json
 
 # Environment files

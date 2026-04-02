@@ -1,4 +1,5 @@
 {
+  "_DEPRECATED": "This file format is deprecated in v2.0. Use .ai-governance/config.json instead. See README.md for migration instructions.",
   "schema_version": "1.0",
   "credential_storage": null,
   "core_governance_path": "/path/to/ai-governance-framework",
