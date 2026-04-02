@@ -1,5 +1,5 @@
 {
-  "_description": "AI Governance Framework v2.0 — Single source of truth for all governance layers. Core is immutable and always highest precedence.",
+  "//": "Core immutable highest precedence → Org → Project → Custom layers → User lowest. Custom layers load in the exact order listed.",
   "schema_version": "2.0",
   "project_name": "Your Project Name",
 

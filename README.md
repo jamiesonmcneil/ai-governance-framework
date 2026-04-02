@@ -233,7 +233,7 @@ your-project-root/
 └── ... (your code)
 ```
 
-> **Important:** The `core/` and `org/` subfolders inside `.ai-governance/` are **optional**. In most setups, `config.json` points to external paths for Core and Org (central shared locations), and these subfolders do not exist. Only create them if you want a local symlink or copy — e.g., `ln -s /central/ai-governance-framework .ai-governance/core`. The `config.json` paths always take precedence.
+> **Important:** The `core/` and `org/` subfolders inside `.ai-governance/` are **optional**. In most company setups, `config.json` points to external absolute or relative paths for Core and Org (e.g., a shared repo). Use symlinks only if you want local copies: `ln -s /path/to/ai-governance-framework .ai-governance/core`. The `config.json` paths always take precedence.
 
 **Minimum required files per project:**
 - `.ai-governance/` folder
@@ -282,8 +282,10 @@ Every new AI session (Claude Code, Grok, Cursor, Copilot, etc.) must:
 1. **Read** `.ai-governance/config.json` in the project root
 2. **If it doesn't exist:** Inform the user and offer to create it from the template
 3. **Parse** all layers defined in `layers` and `custom_layers`
-4. **Read** governance files from each active layer (Core at minimum)
-5. **Read** `.ai-governance/docs/PROGRESS.md` and `TASKS.md` (if they exist)
+4. **Read** governance files from each active layer:
+   - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
+   - **Org/Project/User:** As defined in config
+5. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist)
 6. **Output** a confirmation block listing every active layer + exact path
 7. **Ask** the user for explicit **YES** before proceeding with any work
 
@@ -442,7 +444,7 @@ echo '.ai-governance/user/' >> .gitignore
 rm -f .ai-gov.json .ai-gov.user.json
 ```
 
-The framework is backward-compatible during transition — old files will still be found by AI tools until you delete them. Complete the migration at your own pace.
+The framework is backward-compatible during transition — old files will still be found by AI tools until you delete them. These v1 files are ignored by the new protocol once `.ai-governance/config.json` exists. Complete the migration at your own pace.
 
 ## Standards Alignment & References
 
