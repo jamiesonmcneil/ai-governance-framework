@@ -98,6 +98,18 @@ Any production modification requires:
 
 ---
 
+## Credential Security
+
+From `CREDENTIAL_SECURITY.md`:
+
+- Never store plaintext passwords anywhere
+- Never commit `.env` files or credentials to version control
+- Never paste credentials into AI prompts
+- Credential storage method is configured in `.ai-governance/config.json`
+- Encryption key and encrypted data NEVER in the same location
+
+---
+
 ## Interaction Protocol
 
 From `INTERACTION_PROTOCOL.md`:

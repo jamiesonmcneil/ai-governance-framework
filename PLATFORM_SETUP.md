@@ -26,6 +26,8 @@ cp /path/to/ai-governance-framework/templates/CLAUDE.md ./CLAUDE.md
 # 5. Add .ai-governance/user/ to .gitignore
 ```
 
+> **Note:** The `core/` and `org/` subfolders inside `.ai-governance/` are **optional**. In most setups, `config.json` points to external paths for Core and Org (central shared locations). Only create local subfolders if you want a symlink — e.g., `ln -s /central/ai-governance-framework .ai-governance/core`. The `config.json` paths always take precedence.
+
 ---
 
 ## Per-User Setup
@@ -44,18 +46,44 @@ For developers, create a user preferences file in `.ai-governance/user/` (this f
 
 ---
 
+## Session Start Protocol (All Tools)
+
+Every AI entry-point file (CLAUDE.md, GROK.md, CURSOR.md, etc.) enforces the same mandatory protocol at the start of every session:
+
+1. **Read** `.ai-governance/config.json` from the project root
+2. **Parse** all layers defined in `layers` and `custom_layers`
+3. **Read** governance files from each active layer:
+   - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
+   - **Org:** All files at the org layer path (if enabled)
+   - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md (if they exist)
+   - **User:** Role-based preferences (if present)
+4. **Read** `.ai-governance/docs/PROGRESS.md` and `TASKS.md` (if they exist)
+5. **Output** the confirmation block:
+
+```
+=== AI GOVERNANCE FRAMEWORK v2.0 ===
+Active Layers:
+  Core    → [resolved path] (immutable)
+  Org     → [resolved path]
+  Project → [resolved path]
+  User    → [resolved path]
+Precedence: Core (immutable) → Org → Project → User
+Config confirmed: [date]
+===
+```
+
+6. **Ask** the user: "Do these layers and paths look correct? Reply **YES** to continue."
+7. **Wait** for explicit **YES**. Do not proceed with any work until confirmed.
+
+---
+
 ## Claude (Anthropic)
 
 ### Claude Code (CLI / Desktop / Web)
 
 **Entry-point file:** `CLAUDE.md` in the project root
 
-Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automatically at session start. The Session Start Protocol requires Claude to:
-
-1. Read `.ai-governance/config.json`
-2. List every active layer with exact paths
-3. Confirm precedence (Core immutable, then layers in order)
-4. Ask for explicit **YES** before proceeding
+Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automatically at session start and executes the full Session Start Protocol above.
 
 **Memory:** Claude Code supports persistent memory in `~/.claude/projects/[project]/memory/`. Use for user preferences and feedback. Do NOT store credentials.
 
@@ -73,16 +101,9 @@ Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automati
 
 **Entry-point file:** `GROK.md` in the project root
 
-Copy `templates/GROK.md` and customize. When using Grok in a project context, paste the Session Start Protocol at the beginning of each session. The protocol requires Grok to:
+Copy `templates/GROK.md` and customize. Grok does not have native project-file loading — paste the `GROK.md` content at the start of each session, or use it as a system prompt via the xAI API.
 
-1. Read `.ai-governance/config.json`
-2. Parse all layers (`layers` + `custom_layers`)
-3. Read governance files from each active layer (Core: RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md)
-4. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md`
-5. Output a confirmation block listing every active layer with exact paths
-6. Ask for explicit **YES** before proceeding
-
-**Note:** Grok does not have native project-file loading. Paste the `GROK.md` content at the start of each session, or use it as a system prompt via the xAI API. The entry-point file includes all 14 core rules, the verification hierarchy, production safety protocol, and interaction protocol references.
+The entry-point file executes the full Session Start Protocol (same steps as above) and includes all 14 core rules, the verification hierarchy, production safety protocol, credential security, and interaction protocol references.
 
 ---
 
@@ -92,15 +113,9 @@ Copy `templates/GROK.md` and customize. When using Grok in a project context, pa
 
 **Entry-point file:** `CURSOR.md` in the project root (or `.cursorrules`)
 
-Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically. The Session Start Protocol requires Cursor to:
+Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically and executes the full Session Start Protocol (same steps as above).
 
-1. Read `.ai-governance/config.json`
-2. Parse all layers and read governance files from each (Core at minimum)
-3. Read `.ai-governance/docs/PROGRESS.md` and `TASKS.md`
-4. Output a confirmation block listing every active layer with exact paths
-5. Ask for explicit **YES** before proceeding with any code changes
-
-The entry-point file includes IDE-specific editing rules (read before editing, use existing components, apply changes to all files, no hard-coded values, security in every suggestion) in addition to the full core rules, verification hierarchy, and production safety protocol.
+The entry-point file includes IDE-specific editing rules (read before editing, use existing components, apply changes to all files, no hard-coded values, security in every suggestion) in addition to the full core rules, verification hierarchy, production safety, and credential security.
 
 For Cursor Composer and Agent mode, the same governance applies — the Session Start Protocol runs before any multi-file edits or autonomous actions.
 
@@ -176,19 +191,23 @@ If your AI tool doesn't have a native config mechanism:
 
 ```
 your-project/
-├── .ai-governance/                     ← Governance entry point
-│   ├── config.json                     ← Single source of truth (layer paths, settings)
-│   ├── project/                        ← Project-specific rules (team layer)
+├── .ai-governance/                     ← REQUIRED entry point
+│   ├── config.json                     ← REQUIRED: single source of truth
+│   ├── core/                           ← optional: symlink to central Core
+│   ├── org/                            ← optional: symlink to central Org
+│   ├── project/                        ← project-specific rules (team layer)
 │   │   ├── PROJECT_RULES.md
 │   │   ├── FORBIDDEN.md
 │   │   └── CONVENTIONS.md
-│   ├── docs/                           ← Tracking files
+│   ├── docs/                           ← tracking files
 │   │   ├── PROGRESS.md
 │   │   └── TASKS.md
-│   └── user/                           ← Personal preferences (gitignored)
-├── CLAUDE.md                           ← Claude entry point
+│   └── user/                           ← personal preferences (gitignored)
+├── CLAUDE.md (or GROK.md, CURSOR.md)   ← REQUIRED: AI entry point
 ├── .github/copilot-instructions.md     ← Copilot config (condensed rules)
 └── ... (your code)
 ```
 
-Core and Org governance files are referenced by path in `config.json` — they live in central shared locations, not inside the project.
+> **Important:** The `core/` and `org/` subfolders are **optional**. In most setups, `config.json` points to external paths for Core and Org (central shared locations), and these subfolders do not exist. The `config.json` paths always take precedence.
+
+Core and Org governance files live in central shared locations, not inside the project.
