@@ -50,15 +50,16 @@ For developers, create a user preferences file in `.ai-governance/user/` (this f
 
 Every AI entry-point file (CLAUDE.md, GROK.md, CURSOR.md, etc.) enforces the same mandatory protocol at the start of every session:
 
-1. **Read** `.ai-governance/config.json` from the project root
-2. **Parse** all layers defined in `layers` and `custom_layers`
-3. **Read** governance files from each active layer:
+1. **Read** `.ai-governance/config.json` from the project root.
+   - If it does not exist, inform the user and offer to create it from the framework template.
+2. **Parse** all layers defined in the `layers` object (plus any in `custom_layers`).
+3. **Read** the governance files from each active layer:
    - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
    - **Org:** All files at the org layer path (if enabled)
    - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md, PATTERNS.md (if they exist)
    - **User:** Role-based preferences (if the user layer exists)
-4. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist)
-5. **Output** the confirmation block:
+4. **Read** `.ai-governance/docs/PROGRESS.md` and `.ai-governance/docs/TASKS.md` (if they exist).
+5. **Output** the following confirmation block with the actual resolved paths:
 
 ```
 === AI GOVERNANCE FRAMEWORK v2.0 ===
@@ -73,7 +74,7 @@ Config confirmed: [date]
 ```
 
 6. **Ask** the user: "Do these layers and paths look correct? Reply **YES** to continue."
-7. **Wait** for explicit **YES**. Do not proceed with any work until confirmed.
+7. **Wait** for the user to reply **YES** (explicitly). Do not proceed with any work until confirmed.
 
 ---
 
