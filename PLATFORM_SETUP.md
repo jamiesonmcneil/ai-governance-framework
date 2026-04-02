@@ -83,7 +83,7 @@ Config confirmed: [date]
 
 **Entry-point file:** `CLAUDE.md` in the project root
 
-Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automatically at session start and executes the full Session Start Protocol above.
+Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automatically at session start and executes the full Session Start Protocol above, including reading all Core files (RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md), outputting the confirmation block, and waiting for explicit YES.
 
 **Memory:** Claude Code supports persistent memory in `~/.claude/projects/[project]/memory/`. Use for user preferences and feedback. Do NOT store credentials.
 
@@ -103,7 +103,7 @@ Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automati
 
 Copy `templates/GROK.md` and customize. Grok does not have native project-file loading — paste the `GROK.md` content at the start of each session, or use it as a system prompt via the xAI API.
 
-The entry-point file executes the full Session Start Protocol (same steps as above) and includes all 14 core rules, the verification hierarchy, production safety protocol, credential security, and interaction protocol references.
+The entry-point file executes the full Session Start Protocol: read `.ai-governance/config.json`, parse all layers, read Core files (RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md), output the confirmation block with exact paths, and wait for explicit **YES**. It also includes all 14 core rules, the verification hierarchy, production safety protocol, credential security, and interaction protocol references.
 
 ---
 
@@ -113,9 +113,9 @@ The entry-point file executes the full Session Start Protocol (same steps as abo
 
 **Entry-point file:** `CURSOR.md` in the project root (or `.cursorrules`)
 
-Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically and executes the full Session Start Protocol (same steps as above).
+Copy `templates/CURSOR.md` and customize. Cursor reads `.cursorrules` or project-level instruction files automatically.
 
-The entry-point file includes IDE-specific editing rules (read before editing, use existing components, apply changes to all files, no hard-coded values, security in every suggestion) in addition to the full core rules, verification hierarchy, production safety, and credential security.
+The entry-point file executes the full Session Start Protocol: read `.ai-governance/config.json`, parse all layers, read Core files (RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md), output the confirmation block with exact paths, and wait for explicit **YES**. It also includes IDE-specific editing rules (read before editing, use existing components, apply changes to all files, no hard-coded values, security in every suggestion) in addition to all 14 core rules, verification hierarchy, production safety, and credential security.
 
 For Cursor Composer and Agent mode, the same governance applies — the Session Start Protocol runs before any multi-file edits or autonomous actions.
 

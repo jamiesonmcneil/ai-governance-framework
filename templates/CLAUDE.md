@@ -14,7 +14,7 @@ This project operates under the **AI Governance Framework v2.0**. All governance
    - If it does not exist, inform the user and offer to create it from the framework template.
 2. **Parse** all layers defined in the `layers` object (plus any in `custom_layers`).
 3. **Read** the governance files from each active layer:
-   - **Core:** RULES.md (all rules), SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md
+   - **Core:** RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md
    - **Org:** All files at the org layer path (if enabled)
    - **Project:** PROJECT_RULES.md, FORBIDDEN.md, CONVENTIONS.md, PATTERNS.md (if they exist)
    - **User:** Role-based preferences (if the user layer exists)
@@ -29,7 +29,7 @@ Active Layers:
   Project → [resolved path]
   User    → [resolved path]
 Precedence: Core (immutable) → Org → Project → User
-Config confirmed: [date from config]
+Config confirmed: [date]
 ===
 ```
 
