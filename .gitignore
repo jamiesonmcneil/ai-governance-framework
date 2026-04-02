@@ -1,6 +1,38 @@
-.pids/
-logs/
-.DS_Store
+# AI Governance Framework .gitignore
+#
+# Purpose: Keep the repository focused on shared Core/Org/Project layers only.
+# Never commit personal User-layer overrides, local AI tool settings,
+# secrets, or temporary files. This supports the immutable Core + layered governance model.
 
-# AI Governance Framework v2.0 — User layer
+# === User Layer (Critical - must stay ignored) ===
 .ai-governance/user/
+user/
+
+# === AI Coding Tool Local Files (do not commit) ===
+.cursorignore
+.cursor/
+.claude/
+.clineignore
+*.claude
+.cursorrules
+.windsurf/
+
+# === OS & Editor Junk ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+*.code-workspace
+
+# === Temporary & Log Files ===
+*.log
+*.tmp
+temp/
+tmp/
+
+# === Optional: If any build/output ever appears ===
+dist/
+build/
+node_modules/

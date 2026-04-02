@@ -9,6 +9,7 @@
 - **Session Start Protocol updated:** AI entry-point files must read `config.json`, list every active layer with exact paths, confirm precedence, and wait for explicit user "YES" before proceeding.
 - **Custom layers officially supported:** Any number of additional governance layers can be defined in `config.json` with explicit precedence ordering.
 - **New entry-point templates:** CLAUDE.md, GROK.md, CURSOR.md, ENTRY_POINT_TEMPLATE.md — all production-ready with full Session Start Protocol.
+- **Improved .gitignore:** Explicit protection for User layer and AI tool local files (.cursorignore, .claude/, .cursor/, .windsurf/, etc.).
 
 ### Why
 Addresses issues with layer identification, folder organization, and scalability for company-wide use (central Core/Org + per-project + per-user). Single source of truth eliminates confusion from multiple config files.
