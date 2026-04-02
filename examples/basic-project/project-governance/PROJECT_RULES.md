@@ -28,5 +28,5 @@ Core rules: `/path/to/ai-governance-framework/RULES.md` (14 rules, all mandatory
 
 **Severity:** HIGH
 **Applies to:** All project work
-**Requirement:** Only use AI tools and accounts approved for this project (as configured in `.ai-gov.json`). No personal AI accounts or unapproved browser extensions.
+**Requirement:** Only use AI tools and accounts approved for this project (as configured in `.ai-governance/config.json`). No personal AI accounts or unapproved browser extensions.
 **Why:** Prevents data leakage through shadow AI usage.

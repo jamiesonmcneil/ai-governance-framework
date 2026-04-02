@@ -18,13 +18,13 @@ If the project grows beyond a single session, migrate to the full tracking model
 | PROGRESS.md | Detailed, updated after each task | Single file, updated at session end |
 | TASKS.md | Separate file with IDs and priorities | Combined into PROGRESS.md |
 | HISTORY.md | Session archive | Not needed |
-| project-governance/ | Full rules, forbidden, conventions | Not needed (core rules are enough) |
+| .ai-governance/project/ | Full rules, forbidden, conventions | Not needed (core rules are enough) |
 
 ## File Structure
 
 ```
 lightweight-project/
-├── .ai-gov.json     ← Project configuration
+├── .ai-governance/config.json     ← Project configuration
 ├── CLAUDE.md         ← AI session instructions
 └── PROGRESS.md       ← Combined progress + tasks (single file)
 ```

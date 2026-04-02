@@ -57,7 +57,7 @@ You write code, build features, or manage infrastructure with AI assistance.
 - `RULES.md` — 14 behavioral rules for AI-assisted development
 - `PRODUCTION_SAFETY.md` — if you touch production systems
 
-**Setup:** Create `.ai-gov.user.json` in your project (see Developer Setup below).
+**Setup:** Create your user config in `.ai-governance/user/` (see Developer Setup below).
 
 ### Analyst / Reporter
 
@@ -117,7 +117,7 @@ Different tasks need different levels of care:
 
 ## Developer Setup (Optional for Others)
 
-If you write code with AI tools, create a `.ai-gov.user.json` file in your project root:
+If you write code with AI tools, create a config file in `.ai-governance/user/`:
 
 ```json
 {

@@ -21,7 +21,7 @@ This shows what a completed analyst onboarding looks like.
 
 ## No Config File Needed
 
-Analysts are not required to create `.ai-gov.user.json`. Governance was acknowledged through the team's standard process (Slack confirmation).
+Analysts are not required to create `.ai-governance/user/`. Governance was acknowledged through the team's standard process (Slack confirmation).
 
 ## Time Spent
 

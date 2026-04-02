@@ -10,7 +10,7 @@ This shows what a completed developer onboarding looks like.
 - [x] Disabled training on Claude (Settings > Privacy > "Help improve Claude" OFF)
 - [x] Disabled training on GitHub Copilot (github.com/settings/copilot > unchecked snippets)
 - [x] Usage type: **Developer**
-- [x] Acknowledged governance (created `.ai-gov.user.json`)
+- [x] Acknowledged governance (created `.ai-governance/user/`)
 
 ## Required Reading (Done)
 
@@ -24,7 +24,7 @@ This shows what a completed developer onboarding looks like.
 
 ## User Config (Created)
 
-File: `.ai-gov.user.json`
+File: `.ai-governance/user/`
 
 ```json
 {

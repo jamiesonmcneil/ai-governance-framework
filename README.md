@@ -51,7 +51,7 @@ We keep public releases stable and infrequent while allowing continuous refineme
 
 - **Commits**: Ongoing iteration — wording, clarity, and small refinements.
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
-- **Semantic versions** (`v1.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-gov.json` schema. Breaking changes will always include migration notes.
+- **Semantic versions** (`v2.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-governance/config.json` schema. Breaking changes will always include migration notes.
 
 **Current stable release:** `v2.0.0` — Centralized Layer Architecture (April 2026)
 
@@ -147,7 +147,7 @@ Use this for active development projects or multi-session work with AI.
 - RULES.md (mandatory behavioral rules)
 - INTERACTION_PROTOCOL.md (how to parse and respond to user messages)
 - TRACKING.md (session continuity via PROGRESS.md + TASKS.md)
-- `.ai-gov.json` (project configuration)
+- `.ai-governance/config.json` (project configuration)
 - Project-specific governance files (if needed)
 
 ### Tier 3 — Production / Business Use (Full Governance)
@@ -232,6 +232,8 @@ your-project-root/
 ├── CLAUDE.md (or GROK.md, CURSOR.md)   ← REQUIRED: AI entry point
 └── ... (your code)
 ```
+
+**Note:** The `core/` and `org/` subfolders inside `.ai-governance/` are optional. In most setups, `config.json` points to external paths for Core and Org (central shared locations). Only create local `core/` or `org/` subfolders if you want a local symlink or copy — e.g., `ln -s /central/ai-governance-framework .ai-governance/core`.
 
 **Minimum required files per project:**
 - `.ai-governance/` folder
@@ -353,9 +355,9 @@ Project-level governance may NOT remove or weaken core requirements.
 
 Projects select how rules are implemented — the rule stays the same, the implementation varies:
 
-- Credential storage method — postgres, file, or secrets manager (`.ai-gov.json`)
-- Compliance frameworks — which apply to this project (`.ai-gov.json`)
-- AI tools in use (`.ai-gov.json`)
+- Credential storage method — postgres, file, or secrets manager (`.ai-governance/config.json`)
+- Compliance frameworks — which apply to this project (`.ai-governance/config.json`)
+- AI tools in use (`.ai-governance/config.json`)
 - Tracking mode — lightweight or full (TRACKING.md)
 
 ### 4. OVERRIDABLE (local conventions only)
@@ -411,15 +413,36 @@ cp /path/to/ai-governance-framework/templates/TASKS.md .ai-governance/docs/TASKS
 
 ## Migration from v1.x to v2.0
 
-1. Create `.ai-governance/` folder at project root
-2. Move existing `project-governance/` contents into `.ai-governance/project/`
-3. Move `docs/PROGRESS.md` and `docs/TASKS.md` into `.ai-governance/docs/`
-4. Copy `templates/config.json` → `.ai-governance/config.json` and update the layer paths
-5. Replace your old CLAUDE.md with the v2.0 version from `templates/`
-6. Add `.ai-governance/user/` to `.gitignore`
-7. Delete old `.ai-gov.json` and `.ai-gov.user.json` (deprecated)
+```bash
+# 1. Create the new governance folder structure
+mkdir -p .ai-governance/project .ai-governance/docs
 
-The framework is backward-compatible during transition — old files will still be found until you delete them.
+# 2. Move project governance files
+mv project-governance/* .ai-governance/project/ 2>/dev/null
+rmdir project-governance 2>/dev/null
+
+# 3. Move tracking files
+mv docs/PROGRESS.md .ai-governance/docs/ 2>/dev/null
+mv docs/TASKS.md .ai-governance/docs/ 2>/dev/null
+mv docs/HISTORY.md .ai-governance/docs/ 2>/dev/null
+
+# 4. Create the new config from template
+cp /path/to/ai-governance-framework/templates/config.json .ai-governance/config.json
+# Edit config.json — set your Core path, Org path, etc.
+
+# 5. Replace your entry-point file
+cp /path/to/ai-governance-framework/templates/CLAUDE.md ./CLAUDE.md
+# (or GROK.md, CURSOR.md — pick your tool)
+# Edit to add your project overview and specific rules
+
+# 6. Update .gitignore
+echo '.ai-governance/user/' >> .gitignore
+
+# 7. Remove deprecated v1 files
+rm -f .ai-gov.json .ai-gov.user.json
+```
+
+The framework is backward-compatible during transition — old files will still be found by AI tools until you delete them. Complete the migration at your own pace.
 
 ## Standards Alignment & References
 
@@ -474,9 +497,9 @@ No standard addresses what happens when you scrub personally identifiable inform
 Standard change management says "get approval." In practice, AI tool users develop muscle memory and approve destructive operations reflexively. Our protocol requires typing the exact phrase "CONFIRM PRODUCTION" — not "yes", "ok", or Enter. This deliberate friction has prevented accidental production modifications.
 
 **3. Context-Aware Credential Storage (CREDENTIAL_SECURITY.md)**
-Most frameworks assume one credential storage method. We support three (database, secrets manager, file) with a decision tree, because the same developer may work on a production system with PostgreSQL and a side project with only `.env` files. The `.ai-gov.json` config file records which method is in use so the AI assistant knows how to handle credentials in each context.
+Most frameworks assume one credential storage method. We support three (database, secrets manager, file) with a decision tree, because the same developer may work on a production system with PostgreSQL and a side project with only `.env` files. The `.ai-governance/config.json` config file records which method is in use so the AI assistant knows how to handle credentials in each context.
 
-**4. Session-Start Configuration Confirmation (.ai-gov.json)**
+**4. Session-Start Configuration Confirmation (.ai-governance/config.json)**
 AI assistants lose context between sessions. Instead of hoping the AI "remembers" project settings, we persist them in a JSON file that the AI reads and confirms with the user at the start of every session. This eliminates the class of errors where the AI assumes the wrong environment, credential store, or compliance requirements.
 
 **5. Verification Hierarchy (QA_STANDARDS.md)**

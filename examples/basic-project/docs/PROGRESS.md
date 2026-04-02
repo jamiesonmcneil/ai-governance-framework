@@ -14,7 +14,7 @@ Project initialized with governance framework.
 ### Files Changed
 | File | Change |
 |------|--------|
-| `.ai-gov.json` | Created with project configuration |
+| `.ai-governance/config.json` | Created with project configuration |
 | `CLAUDE.md` | Created with session instructions |
 
 ### Key Decisions

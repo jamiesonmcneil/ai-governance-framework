@@ -4,7 +4,7 @@ This is a minimal example showing how to use the AI Governance Framework in a re
 
 ## What This Demonstrates
 
-- Governance configuration via `.ai-gov.json`
+- Governance configuration via `.ai-governance/config.json`
 - Session workflow defined in `CLAUDE.md`
 - Task tracking with `TASKS.md` and `PROGRESS.md`
 - Project-level governance extensions (rules, prohibitions, conventions)
@@ -12,12 +12,12 @@ This is a minimal example showing how to use the AI Governance Framework in a re
 ## How to Use
 
 1. Copy this folder into your project (or use it as a reference)
-2. Edit `.ai-gov.json` with your project's settings
+2. Edit `.ai-governance/config.json` with your project's settings
 3. Edit `CLAUDE.md` with your project's context
 4. Start your AI tool (Claude Code, Cursor, etc.)
 
 Expected workflow:
-- Read `.ai-gov.json` and confirm your settings
+- Read `.ai-governance/config.json` and confirm your settings
 - Load governance rules from the core framework
 - Read `PROGRESS.md` and `TASKS.md` for current state
 - Follow all rules during the session
@@ -41,12 +41,12 @@ These steps reflect the governance framework's expected workflow.
 
 ```
 basic-project/
-├── .ai-gov.json              ← Project configuration (credentials, governance paths)
+├── .ai-governance/config.json              ← Project configuration (credentials, governance paths)
 ├── CLAUDE.md                  ← AI session instructions (read at session start)
 ├── docs/
 │   ├── PROGRESS.md            ← What was done, when, and why
 │   └── TASKS.md               ← Outstanding work items
-└── project-governance/
+└── .ai-governance/project/
     ├── PROJECT_RULES.md       ← Rules specific to this project
     ├── FORBIDDEN.md           ← Prohibitions specific to this project
     └── CONVENTIONS.md         ← Naming and style conventions

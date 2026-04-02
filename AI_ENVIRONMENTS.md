@@ -197,7 +197,7 @@ Layered processing must not be used to bypass governance restrictions. Data sani
 
 ---
 
-## Environment Selection in .ai-gov.json
+## Environment Selection in .ai-governance/config.json
 
 Projects should declare their AI execution environment in the session configuration:
 

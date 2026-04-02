@@ -20,7 +20,7 @@ Use the full tracking system for any project that spans multiple sessions, has p
 
 ## Tracking Files (Full Mode)
 
-Every project using AI assistance should maintain these files in a `docs/` directory (or equivalent like `.ai-gov/`, `.claude/`):
+Every project using AI assistance should maintain these files in a `.ai-governance/docs/` directory (or equivalent like `.claude/`):
 
 | File | Purpose | Update Frequency |
 |------|---------|-----------------|

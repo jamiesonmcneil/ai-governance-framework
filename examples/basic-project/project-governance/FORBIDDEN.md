@@ -45,7 +45,7 @@ app.post('/users', validate(userSchema), (req, res) => {
 ```
 FORBIDDEN: Pasting project code into personal ChatGPT/Claude free accounts
 FORBIDDEN: Using unapproved browser AI extensions on work data
-REQUIRED:  Use only approved AI tools configured in .ai-gov.json
+REQUIRED:  Use only approved AI tools configured in .ai-governance/config.json
 ```
 
 ### Granting AI Broad Data Access

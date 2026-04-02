@@ -6,24 +6,24 @@
 
 ## Storage Decision Tree
 
-The storage method is configured per-project in `.ai-gov.json` (`credential_storage` field).
+The storage method is configured per-project in `.ai-governance/config.json` (`credential_storage` field).
 
 ```
 1. Is a PostgreSQL (or other) database available?
    YES -> Use encrypted database table (see DDL below)
           Encryption key in .env file (never in DB)
-          Set .ai-gov.json: "credential_storage": "postgres"
+          Set .ai-governance/config.json: "credential_storage": "postgres"
 
 2. Is a secrets manager available (AWS SM, Azure KV, HashiCorp Vault)?
    YES -> Use secrets manager
           Access credentials in .env
-          Set .ai-gov.json: "credential_storage": "secrets_manager"
+          Set .ai-governance/config.json: "credential_storage": "secrets_manager"
 
 3. Neither available:
    -> Use encrypted file storage
       Credentials in .env.local (gitignored, chmod 600)
       Encryption key in separate .env or system env var
-      Set .ai-gov.json: "credential_storage": "file"
+      Set .ai-governance/config.json: "credential_storage": "file"
 
 ALL METHODS:
 - Encryption key and encrypted data NEVER in the same location

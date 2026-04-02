@@ -96,4 +96,4 @@ const isValid = await bcrypt.compare(password, storedHash);
 
 ## Project-Specific Configuration
 
-The `.ai-gov.json` file specifies the credential storage method. See `CREDENTIAL_SECURITY.md` for the storage decision tree and DDL for database-backed credential stores.
+The `.ai-governance/config.json` file specifies the credential storage method. See `CREDENTIAL_SECURITY.md` for the storage decision tree and DDL for database-backed credential stores.

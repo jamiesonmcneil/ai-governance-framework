@@ -3,7 +3,7 @@
 ## Governance
 
 - **Core governance:** `/path/to/ai-governance-framework/` — RULES.md, INTERACTION_PROTOCOL.md, SELF_GOVERNANCE.md, AI_ENVIRONMENTS.md
-- **Session config:** `.ai-gov.json`
+- **Session config:** `.ai-governance/config.json`
 - **Tracking:** Lightweight mode — single `PROGRESS.md`
 
 ## Key Rules
@@ -14,7 +14,7 @@
 
 ## Session Start
 
-1. Read `.ai-gov.json` — confirm with user
+1. Read `.ai-governance/config.json` — confirm with user
 2. Read core RULES.md and INTERACTION_PROTOCOL.md
 3. Read `PROGRESS.md` for current state
 4. Ensure the task is clearly understood before starting work
