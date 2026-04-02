@@ -446,6 +446,12 @@ rm -f .ai-gov.json .ai-gov.user.json
 
 The framework is backward-compatible during transition — old files will still be found by AI tools until you delete them. These v1 files are ignored by the new protocol once `.ai-governance/config.json` exists. Complete the migration at your own pace.
 
+## Examples
+
+- `examples/basic-project/` – Minimal project using only Core + Project layer
+- `examples/lightweight-project/` – Single-session project with minimal tracking
+- `examples/acme-org/` – Full example of a shared **Org layer** for company-wide governance
+
 ## Standards Alignment & References
 
 This framework was built on established international standards for information security, AI governance, and privacy. Each core document maps to specific controls from these frameworks. See COMPLIANCE.md for the detailed control-by-control mapping.
