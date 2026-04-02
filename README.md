@@ -233,7 +233,7 @@ your-project-root/
 └── ... (your code)
 ```
 
-**Note:** The `core/` and `org/` subfolders inside `.ai-governance/` are optional. In most setups, `config.json` points to external paths for Core and Org (central shared locations). Only create local `core/` or `org/` subfolders if you want a local symlink or copy — e.g., `ln -s /central/ai-governance-framework .ai-governance/core`.
+> **Important:** The `core/` and `org/` subfolders inside `.ai-governance/` are **optional**. In most setups, `config.json` points to external paths for Core and Org (central shared locations), and these subfolders do not exist. Only create them if you want a local symlink or copy — e.g., `ln -s /central/ai-governance-framework .ai-governance/core`. The `config.json` paths always take precedence.
 
 **Minimum required files per project:**
 - `.ai-governance/` folder

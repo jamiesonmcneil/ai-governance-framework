@@ -203,7 +203,7 @@ Projects should declare their AI execution environment in the session configurat
 
 ```json
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "ai_execution_environment": {
     "type": "public",
     "notes": "Using Claude API for development assistance. No customer data."
