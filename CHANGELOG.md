@@ -8,8 +8,10 @@
 - **Documentation relocated:** PROGRESS.md, TASKS.md, and other framework-specific docs now live in `.ai-governance/docs/` (no longer in the project's `docs/` folder).
 - **Session Start Protocol updated:** AI entry-point files must read `config.json`, list every active layer with exact paths, confirm precedence, and wait for explicit user "YES" before proceeding.
 - **Custom layers officially supported:** Any number of additional governance layers can be defined in `config.json` with explicit precedence ordering.
-- **New entry-point templates:** CLAUDE.md, GROK.md, CURSOR.md, ENTRY_POINT_TEMPLATE.md — all production-ready with full Session Start Protocol.
+- **New entry-point templates:** CLAUDE.md, GROK.md, CURSOR.md, ENTRY_POINT_TEMPLATE.md — all production-ready with full Session Start Protocol (7 core files listed, confirmation block with paths, explicit YES gate).
 - **Improved .gitignore:** Explicit protection for User layer and AI tool local files (.cursorignore, .claude/, .cursor/, .windsurf/, etc.).
+- **Optional core/org subfolders:** Clarified that `.ai-governance/core/` and `.ai-governance/org/` are optional local symlinks; `config.json` paths take precedence.
+- **v1 migration support:** Step-by-step migration guide with `rm -f .ai-gov.json .ai-gov.user.json`; v1 files are ignored once `config.json` exists.
 
 ### Why
 Addresses issues with layer identification, folder organization, and scalability for company-wide use (central Core/Org + per-project + per-user). Single source of truth eliminates confusion from multiple config files.
