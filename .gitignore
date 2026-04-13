@@ -17,6 +17,10 @@ user/
 .cursorrules
 .windsurf/
 
+# Exceptions: adapter template files (tracked so they can be copied into projects)
+!adapters/claude-code/.claude/
+!adapters/claude-code/.claude/**
+
 # === OS & Editor Junk ===
 .DS_Store
 Thumbs.db

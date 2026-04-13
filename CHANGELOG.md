@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.1.0] - 2026-04-13
+
+### Added
+- Enforcement tiers model (A/B/C/D) in PLATFORM_SETUP.md
+- `adapters/` folder with per-tool enforcement guidance
+- Claude Code Tier A: `SessionStart` hook (`.claude/hooks/session-start.sh`) that injects live instruction for reliable Session Start Protocol execution
+- Microsoft Copilot Tier C: full admin-side guidance for the 7 canonical scenarios (M365 Copilot licensed, M365 Copilot Chat free/work, OWA/browser work, browser personal, Consumer Copilot apps, Power Platform opt-in OFF, Power Platform opt-in ON) with EDP classifications, DLP starter policies (Purview + Power Platform), and Minimum Baseline checklist
+- `USER_VERIFICATION.md` as universal backstop for all tiers
+
+### Why
+CLAUDE.md alone is routinely skipped on short first messages. The hook + verification model closes this reliability gap while keeping the framework tool-agnostic.
+
+### Migration
+No breaking changes to existing projects. Claude Code users: copy `adapters/claude-code/.claude/` and run `chmod +x .claude/hooks/session-start.sh`. All users should adopt the one-second verification check in USER_VERIFICATION.md.
+
+---
+
 ## [2.0.0] - 2026-04-02
 
 ### Breaking Changes

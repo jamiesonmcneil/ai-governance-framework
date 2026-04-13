@@ -8,6 +8,23 @@ Last Reviewed: 2026-04-02 | Next Review Due: 2026-07-02
 
 The governance rules are tool-agnostic, but each AI platform has its own mechanism for loading instructions at session start. This guide covers the major platforms. **Platform configurations change frequently — review every 90 days and update as needed.**
 
+> **See also:** `adapters/` at the repo root contains per-tool enforcement details, including the Claude Code `SessionStart` hook (tier A enforcement), Microsoft Copilot admin-side DLP guidance (tier C), and user-verification recovery replies for every supported tool. `USER_VERIFICATION.md` defines the one-second check every user must do on each session's first response.
+
+---
+
+## Enforcement Tiers
+
+Before choosing a tool for governed work, understand its enforcement strength:
+
+| Tier | Mechanism | Reliability | Tools |
+|------|-----------|-------------|-------|
+| **A** | Harness-level hook injects a live instruction at session start | Strong | Claude Code (`SessionStart` hook) |
+| **B** | Tool auto-reads a context file; model compliance drifts on short prompts | Medium | Cursor, Windsurf, GitHub Copilot, ChatGPT Projects, Gemini system instruction, Grok |
+| **C** | No in-session mechanism; enforcement is organizational (DLP, admin controls, sensitivity labels) | Strong for data protection, weak for behavior | Microsoft Copilot (all tiers) |
+| **D** | User pastes governance at start of each session | Weak | Any tool with no native config |
+
+**User verification (`USER_VERIFICATION.md`) is mandatory for all tiers.** Tier A hooks reduce — but do not eliminate — the need for the user to check that the audit block appeared on first response.
+
 ---
 
 ## Quick Setup (Any Project)
@@ -80,11 +97,27 @@ Config confirmed: [date]
 
 ## Claude (Anthropic)
 
-### Claude Code (CLI / Desktop / Web)
+### Claude Code (CLI / Desktop / Web) — Tier A enforcement recommended
 
 **Entry-point file:** `CLAUDE.md` in the project root
 
-Copy `templates/CLAUDE.md` and customize. Claude Code reads `CLAUDE.md` automatically at session start and executes the full Session Start Protocol above, including reading all Core files (RULES.md, SELF_GOVERNANCE.md, FORBIDDEN.md, INTERACTION_PROTOCOL.md, PRODUCTION_SAFETY.md, QA_STANDARDS.md, CREDENTIAL_SECURITY.md), outputting the confirmation block, and waiting for explicit YES.
+**Recommended — install the `SessionStart` hook adapter for tier A enforcement:**
+
+```bash
+# Copy the hook adapter into your project
+cp -r /path/to/ai-governance-framework/adapters/claude-code/.claude ./
+chmod +x .claude/hooks/session-start.sh
+```
+
+The hook fires on every session start, resume, and `/clear`, injecting a live instruction into Claude's context that forces execution of the Session Start Protocol. This is substantially more reliable than `CLAUDE.md` alone. See `adapters/claude-code/README.md` for details.
+
+**Also copy the entry-point file:**
+
+```bash
+cp /path/to/ai-governance-framework/templates/CLAUDE.md ./CLAUDE.md
+```
+
+Edit to fill in project-specific context. Claude Code reads `CLAUDE.md` automatically.
 
 **Memory:** Claude Code supports persistent memory in `~/.claude/projects/[project]/memory/`. Use for user preferences and feedback. Do NOT store credentials.
 
@@ -142,6 +175,40 @@ Full rules: .ai-governance/config.json → Core layer → RULES.md
 ```
 
 **Limitations:** Copilot does not have session memory or progress tracking. Use `.ai-governance/docs/PROGRESS.md` and `TASKS.md` manually or via a different AI tool.
+
+---
+
+## Microsoft Copilot (Consumer / Entra / M365) — Tier C enforcement
+
+**No context file, no hook. Enforcement is admin-side only.**
+
+Microsoft Copilot is a different product category. It has no project root, no `.ai-governance/` folder, no lifecycle hooks. Enforcement happens through:
+
+- Microsoft Purview DLP policies (block credentials, regulated data)
+- Sensitivity labels (restrict Copilot grounding)
+- Copilot Control System (data source scoping)
+- Restricted SharePoint Search (grounding allowlist)
+- Entra Conditional Access (device + MFA requirements)
+
+And there are **seven distinct scenarios** (not three tiers) per Microsoft's canonical reference:
+
+| Scenario | Classification |
+|----------|----------------|
+| M365 Copilot (licensed) | Approved |
+| M365 Copilot Chat (free, work account) | Approved (Limited) |
+| Copilot via OWA / browser (work account) | Approved |
+| Copilot via browser (personal MSA) | Prohibited |
+| Consumer Copilot apps | Prohibited |
+| Power Platform Copilot (opt-in OFF) | Approved |
+| Power Platform Copilot (opt-in ON) | Restricted |
+
+See `adapters/microsoft-copilot/` for:
+- `canonical-reference-table.md` — the authoritative 7-scenario matrix with EDP, training, audit, and classification fields
+- `README.md` — the admin-enforcement model
+- `tier-classification.md` — user-facing decision tree and simplified 4-tier onboarding model
+- `dlp-policy-template.md` — starter Purview DLP policies (including Power Platform Copilot) with 8-week rollout plan
+
+**Do not adopt M365 Copilot for regulated data without first implementing the admin baseline** listed in the adapter README.
 
 ---
 

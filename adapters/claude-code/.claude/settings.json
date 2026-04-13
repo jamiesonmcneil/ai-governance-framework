@@ -1,0 +1,16 @@
+{
+  "_comment": "AI Governance Framework v2.0 — Claude Code SessionStart hook. Fires on every session start, resume, and clear. Injects a live instruction telling Claude to execute the Session Start Protocol from CLAUDE.md before responding.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

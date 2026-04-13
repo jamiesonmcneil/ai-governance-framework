@@ -82,7 +82,13 @@ Sensitive data may be processed in approved enterprise or self-hosted AI environ
 | **ChatGPT** (OpenAI) | YES — opt out via Settings > Data Controls > "Improve the model for everyone" | NO | NO | NO |
 | **Gemini** (Google) | YES — opt out via Gemini app Activity panel or myactivity.google.com | NO (Workspace) | NO (Vertex AI) | Depends* |
 | **GitHub Copilot** | — | NO | NO | — |
-| **Microsoft Copilot** | YES (consumer) | — | NO (M365) | — |
+| **MS — Consumer Copilot apps** (personal MSA) | YES (foundation model possible) | — | — | — |
+| **MS — Copilot via browser** (personal MSA) | YES (foundation model possible) | — | — | — |
+| **MS — Copilot Chat** (Entra, free w/ M365, EDP enforced) | — | NO (EDP) | NO (EDP) | — |
+| **MS — Copilot via OWA / browser** (Entra work account) | — | NO (EDP) | NO (EDP) | — |
+| **MS — Microsoft 365 Copilot** (paid, Entra, tenant-grounded) | — | NO (EDP) | NO (EDP) | — |
+| **MS — Power Platform Copilot** (opt-in OFF, default) | — | NO (EDP) | NO (EDP) | — |
+| **MS — Power Platform Copilot** (opt-in ON) | — | Feature-only* | Feature-only* | — |
 | **Cursor** | May store (privacy mode off) | Privacy mode available | NO | Via provider |
 | **Windsurf** | Telemetry collected | NO | NO | — |
 | **Perplexity AI** | YES (free tier) | NO (Pro) | — | — |
@@ -90,11 +96,13 @@ Sensitive data may be processed in approved enterprise or self-hosted AI environ
 | **Meta AI** | YES — integrated into WhatsApp, Instagram, Facebook | — | — | — |
 
 *Google AI Studio free API may train; paid Vertex AI does not.
+*Power Platform Copilot opt-in ON: "feature-only" means Microsoft may use interaction data for Power Platform Copilot feature improvement / review, not global foundation-model pre-training. Still creates a sub-processing relationship — classification **Restricted**, not Approved.
 
 **Important nuances:**
 - **Claude Free/Pro/Max:** Anthropic reversed its policy in September 2025. Training is now **on by default — you MUST disable it** via Settings > Privacy > "Help improve Claude." If left enabled, Anthropic may retain your conversations for up to 5 years for model training. Even with opt-out, safety-flagged conversations may still be reviewed.
 - **ChatGPT:** If you give thumbs-up/down feedback, the **entire conversation** may be used for training regardless of your opt-out setting. Use Temporary Chat mode for sensitive one-off queries.
 - **Gemini in Workspace:** Has different privacy terms than standalone Gemini. The boundary between "using Gemini" and "Google applying Gemini to your email" is increasingly blurred.
+- **Microsoft Copilot is seven scenarios, not three tiers.** Microsoft's own canonical reference table (see `adapters/microsoft-copilot/canonical-reference-table.md`) classifies Copilot across seven distinct scenarios, each with its own EDP status, audit coverage, and governance classification (Approved / Approved Limited / Restricted / Prohibited). Key points: Consumer Copilot apps and browser Copilot with a personal MSA are **Prohibited** for work data — treat them like ChatGPT Free. Copilot Chat with Entra sign-in is **Approved (Limited)** — EDP enforced but non-sensitive data only. M365 Copilot (licensed) and Copilot via OWA/browser with a work account are **Approved** when the admin baseline is in place. Power Platform Copilot has its own governance: default opt-in OFF is **Approved**; opt-in ON moves every subsequent interaction to **Restricted** because Microsoft may use interaction data for feature improvement. The UI rarely labels which scenario you're on — check your sign-in account and the surface. See `adapters/microsoft-copilot/tier-classification.md` for the decision tree.
 
 **Rules:**
 1. **Disable training on EVERY AI tool you use.** If the platform offers an opt-out setting, turn it off immediately — regardless of what plan you're on or what you use it for. There is no reason to let any AI provider train on your input. See the Opt-Out Checklist below.
