@@ -45,6 +45,8 @@ Examples: Azure OpenAI, AWS Bedrock, Google Vertex AI, enterprise Claude/GPT agr
 
 **Important:** Enterprise AI tools (e.g., Microsoft Copilot, Azure OpenAI, Claude API, AWS Bedrock) commonly process internal data — analyzing documents in SharePoint, summarizing emails, generating code from internal repositories. Using these tools on data already stored within the same enterprise environment is generally acceptable when data access permissions are correctly configured, the service operates under approved agreements, and data retention meets organizational requirements.
 
+> **Microsoft Copilot is not one tool — it's seven distinct scenarios with different EDP, audit, and tenant-control profiles.** "Microsoft Copilot" in a sentence is ambiguous: M365 Copilot (licensed) is fully Approved with full Purview audit; Copilot Chat (free w/ Entra) is Approved (Limited) for non-sensitive only; Power Platform Copilot (opt-in ON) is Restricted; consumer/MSA Copilot is Prohibited for any work data. Always classify the specific scenario before treating "Copilot" as enterprise-safe — see `adapters/microsoft-copilot/canonical-reference-table.md`.
+
 Enterprise AI reduces certain risks but does not eliminate them:
 - Data is still processed externally (for API-based systems)
 - AI may aggregate, infer, or expose data in unintended ways

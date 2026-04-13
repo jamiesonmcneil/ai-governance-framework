@@ -1,8 +1,10 @@
 # [Project Name]
 
-## AI Governance Framework v2.0 — Claude Session Initializer
+## AI Governance Framework v2.1.0 — Claude Session Initializer
 
-This project operates under the **AI Governance Framework v2.0**. All governance rules are mandatory and non-negotiable.
+This project operates under the **AI Governance Framework v2.1.0**. All governance rules are mandatory and non-negotiable.
+
+> **Recommended for Claude Code:** install the `SessionStart` hook from `adapters/claude-code/.claude/` to enforce this protocol at the harness level (Tier A). The hook injects a live instruction at every session start so the protocol is not skipped on short first messages. See `adapters/claude-code/README.md`.
 
 ---
 
@@ -35,6 +37,8 @@ Config confirmed: [date]
 
 6. **Ask** the user: "Do these layers and paths look correct? Reply **YES** to continue."
 7. **Wait** for the user to reply **YES** (explicitly). Do not proceed with any work until confirmed.
+
+> **User-side verification (mandatory):** if the audit block above does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped.
 
 ---
 

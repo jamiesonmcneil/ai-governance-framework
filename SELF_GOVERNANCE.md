@@ -199,16 +199,20 @@ If you use free or personal plans for anything work-related, opt out of training
 
 | Scenario | Recommended Tool | Tier |
 |----------|-----------------|------|
-| Writing code at work | Claude Code, Copilot, Cursor | API / Business / Enterprise |
+| Writing code at work | Claude Code, GitHub Copilot, Cursor | API / Business / Enterprise |
 | Quick personal question | Any chat interface | Free (with opt-out) |
-| Analyzing company documents | Claude Team/Enterprise or ChatGPT Team | Team+ only |
+| Analyzing company documents | M365 Copilot (licensed) — tenant-grounded; or Claude Team/Enterprise / ChatGPT Team | Team+ only |
+| Summarizing email / SharePoint / Teams content | M365 Copilot (licensed) — only tool with native tenant grounding under EDP | M365 Copilot license required |
 | Customer data analysis | **None** — use internal/self-hosted tools only | Never external AI |
-| Drafting emails with internal info | Claude Team or M365 Copilot Enterprise | Team+ only |
+| Drafting emails with internal info | M365 Copilot (licensed, in Outlook) or Claude Team | Team+ only |
 | Resume screening or HR analysis | **None** or fully anonymized data only | Internal tools preferred |
-| Legal document drafting | Claude Team/Enterprise with lawyer review | Team+ only, always reviewed |
-| Financial analysis | Anonymized/aggregated data only | Team+ only, verify calculations |
+| Legal document drafting | Claude Team/Enterprise or M365 Copilot (licensed) — lawyer review required | Team+ only, always reviewed |
+| Financial analysis | M365 Copilot (licensed) on tenant data, or anonymized/aggregated in Claude Team / ChatGPT Team | Team+ only, verify calculations |
+| Building Power Platform apps with AI | Power Platform Copilot (opt-in OFF) — tenant controls apply | Opt-in ON requires governance review (Restricted) |
 | Marketing copy | Any (no customer data involved) | Free is fine |
 | Learning / tutorials | Any | Free is fine (no sensitive data) |
+
+> **Microsoft Copilot scenarios:** M365 Copilot, Copilot Chat (free w/ Entra), browser personal Copilot, Consumer Copilot, and Power Platform Copilot are seven distinct scenarios with very different governance classifications. Always check `adapters/microsoft-copilot/canonical-reference-table.md` before pasting business data — "Copilot" alone is ambiguous. Personal-MSA Copilot scenarios are **Prohibited** for any work data regardless of how the tool is presented in the UI.
 
 ---
 

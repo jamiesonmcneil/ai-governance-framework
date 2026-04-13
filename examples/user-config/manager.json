@@ -1,5 +1,6 @@
 {
+  "//": "User-layer config example. ai_tools lists the per-user IDE/CLI tools where this user opts in. Microsoft 365 Copilot, Copilot Chat (Entra), and Power Platform Copilot are admin-enforced via Purview DLP and Entra — they are not listed here. See adapters/microsoft-copilot/canonical-reference-table.md.",
   "role": "manager",
-  "ai_tools": ["claude", "copilot"],
-  "governance_acknowledged": "2026-03-30"
+  "ai_tools": ["claude", "github-copilot"],
+  "governance_acknowledged": "2026-04-13"
 }

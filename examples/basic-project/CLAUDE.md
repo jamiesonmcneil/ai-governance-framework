@@ -26,6 +26,8 @@ Precedence: Core (immutable) → Project
 6. Ask for explicit **YES** before proceeding
 7. Understand current task before writing any code
 
+> **User-side verification:** if the audit block above is missing in my first response, see `USER_VERIFICATION.md` for the recovery reply. Tier B context-file enforcement requires this backstop. Claude Code users can also install the `adapters/claude-code/` SessionStart hook for stronger Tier A enforcement.
+
 ## Key Principles
 
 - Use only approved tools and accounts for work data — no personal AI accounts or unapproved extensions

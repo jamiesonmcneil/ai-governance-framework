@@ -1,5 +1,6 @@
 {
+  "//": "User-layer config example. ai_tools lists the per-user IDE/CLI tools. Microsoft 365 Copilot scenarios are admin-enforced via Purview DLP and Entra — they are governed at the tenant layer, not here. See adapters/microsoft-copilot/canonical-reference-table.md.",
   "role": "developer",
-  "ai_tools": ["claude-code"],
-  "governance_acknowledged": "2026-03-30"
+  "ai_tools": ["claude-code", "github-copilot"],
+  "governance_acknowledged": "2026-04-13"
 }

@@ -47,3 +47,8 @@
 
 # Read /path/to/ai-governance-framework/RULES.md for the complete rule set.
 # A task is only complete at Level 5 verification (end-to-end workflow). Levels 1-4 are progress, not completion.
+
+# === USER VERIFICATION (Tier B fallback) ===
+# Windsurf's enforcement is Tier B (context-file). If the AI's first response does
+# not include the governance audit block, the user must follow the recovery reply
+# in /path/to/ai-governance-framework/USER_VERIFICATION.md.

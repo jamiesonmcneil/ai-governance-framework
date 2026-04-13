@@ -42,6 +42,8 @@ Acceptable if these are not confidential. But verify whatever trend analysis AI 
 
 Never do this with a public AI tool. Anonymize the data first or use an approved enterprise tool.
 
+**Tool guidance for company-data analysis:** M365 Copilot (licensed) is typically the right tool — it grounds on your tenant data under EDP with full Purview audit. Copilot Chat (free w/ Entra) is Approved (Limited) — fine for general analytical questions but not for raw regulated data. See `adapters/microsoft-copilot/canonical-reference-table.md` for which scenario your sign-in puts you in.
+
 ---
 
 ## Brainstorming Ideas
@@ -115,3 +117,9 @@ Never acceptable. AI confidently produces legally incorrect language.
 | Brainstorming | Low | Don't overshare confidential context |
 | Writing code | Medium–High | Test everything, review for security, verify imports exist |
 | Final outputs | High | Maximum verification, disclose AI use, human owns the result |
+
+---
+
+## Microsoft Copilot Quick Reference
+
+For company-data scenarios (analyzing email/SharePoint/Teams content, drafting in Word/Excel/Outlook), M365 Copilot (licensed) is usually the right tool — it grounds on your tenant under EDP with full audit. Always check which Microsoft Copilot scenario you are in before pasting business data. Personal-MSA Copilot is **Prohibited** for any work data even if your phone shows the same icon as your work Copilot. Full matrix: `adapters/microsoft-copilot/canonical-reference-table.md`.

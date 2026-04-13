@@ -1,5 +1,6 @@
 {
+  "//": "User-layer config example. ai_tools lists the per-user tools where this user opts in. Microsoft 365 Copilot scenarios are admin-enforced via Purview DLP and are not listed here. See adapters/microsoft-copilot/canonical-reference-table.md.",
   "role": "general",
   "ai_tools": ["chatgpt"],
-  "governance_acknowledged": "2026-03-30"
+  "governance_acknowledged": "2026-04-13"
 }

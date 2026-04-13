@@ -4,7 +4,9 @@
 
 ## Scope
 
-This protocol applies to **conversational AI interactions** — any exchange where a human communicates with an AI assistant through text, voice, or CLI. This includes chat interfaces (Claude, ChatGPT, Gemini), code assistants (Claude Code, Cursor, Copilot Chat), and voice assistants.
+This protocol applies to **conversational AI interactions** — any exchange where a human communicates with an AI assistant through text, voice, or CLI. This includes chat interfaces (Claude, ChatGPT, Gemini, M365 Copilot Chat with Entra sign-in), code assistants (Claude Code, Cursor, GitHub Copilot Chat), and voice assistants.
+
+> Note: "Copilot Chat" can refer to multiple products. In this document it means the conversational chat surface of any Copilot — most commonly GitHub Copilot Chat (in IDE) or M365 Copilot Chat (web/Outlook with work account). For Microsoft Copilot specifically, consumer/MSA scenarios are governed differently — see `adapters/microsoft-copilot/canonical-reference-table.md`.
 
 This does **not** apply to non-conversational AI usage: autocomplete suggestions, programmatic API calls, batch processing, or embedding generation. Those interactions have no "message" to parse.
 

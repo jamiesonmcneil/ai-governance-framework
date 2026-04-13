@@ -20,6 +20,8 @@
 4. Read `PROGRESS.md` for current state
 5. Ensure the task is clearly understood before starting work
 
+> **If the audit block is missing in the first response:** see `USER_VERIFICATION.md` for the recovery reply.
+
 ## Project Overview
 
 [What this project does — one or two lines]

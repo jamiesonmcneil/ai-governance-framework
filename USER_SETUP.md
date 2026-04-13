@@ -39,6 +39,8 @@ If you remember nothing else, remember these three.
 | GitHub Copilot | github.com/settings/copilot > uncheck "Allow GitHub to use my code snippets" |
 | Gemini | myactivity.google.com/product/gemini > turn OFF "Gemini Apps Activity" |
 | Cursor | Settings > General > enable Privacy Mode |
+| Microsoft Copilot (consumer / personal MSA) | copilot.microsoft.com > Settings — and **do not use for work data**, this tier is Prohibited |
+| M365 Copilot / Copilot Chat (Entra work account) | No user-side opt-out needed — Enterprise Data Protection (EDP) is admin-enforced. Confirm with IT that Purview DLP and tenant settings are configured. See `adapters/microsoft-copilot/canonical-reference-table.md` |
 
 Do this now. It takes 30 seconds per tool.
 
@@ -56,6 +58,12 @@ You write code, build features, or manage infrastructure with AI assistance.
 - `SELF_GOVERNANCE.md` — what never goes into AI tools
 - `RULES.md` — 14 behavioral rules for AI-assisted development
 - `PRODUCTION_SAFETY.md` — if you touch production systems
+- `USER_VERIFICATION.md` — the one-second check at the start of every session
+
+**Microsoft Copilot guidance:**
+- GitHub Copilot inside the IDE is your usual coding assistant — review every suggestion (it bypasses governance prompts)
+- M365 Copilot is fine for drafting docs about your code, but **do not paste production secrets, customer data, or unmerged proprietary algorithms** into it
+- Power Platform Copilot (opt-in OFF) for low-code building is Approved; opt-in ON is Restricted — check with your Power Platform admin before pasting business data
 
 **Setup:** Create your user config in `.ai-governance/user/` (see Developer Setup below).
 
@@ -65,11 +73,17 @@ You use AI to analyze data, draft reports, or summarize information.
 
 **Required reading:**
 - `SELF_GOVERNANCE.md` — what never goes into AI tools
+- `USER_VERIFICATION.md` — verify the AI loaded governance before pasting business data
 
 **Key rules for you:**
 - Never upload real customer data, financials, or PII — use anonymized or aggregated data
 - Verify all numbers, calculations, and claims AI produces
 - Disclose AI involvement where required by your organization
+
+**Microsoft Copilot guidance:**
+- M365 Copilot (licensed) is the **preferred tool for analyzing tenant data** — it grounds on your SharePoint/email/Teams under EDP, with full audit
+- Copilot Chat (free w/ Entra) is Approved (Limited) — fine for general analysis questions, **not** for pasting regulated/customer data
+- Always confirm M365 Copilot has DLP and sensitivity labels configured before regulated data — see `adapters/microsoft-copilot/canonical-reference-table.md`
 
 ### General AI User
 
@@ -91,11 +105,18 @@ You use AI for analysis, strategy, or reviewing AI-assisted work from your team.
 
 **Required reading:**
 - `SELF_GOVERNANCE.md` — what never goes into AI tools
+- `USER_VERIFICATION.md` — applies even more for managers (you may approve AI-assisted work for the team)
 
 **Key rules for you:**
 - File uploads (PDFs, spreadsheets) are processed on remote servers — same risks as typed text
 - AI plugins and integrations can access your calendar, email, and files — understand what you're granting
 - AI must not be the sole basis for high-impact business, legal, or financial decisions
+
+**Microsoft Copilot guidance:**
+- M365 Copilot (licensed) is the typical tool for executive summaries of your team's email/SharePoint/Teams content — Approved per org policy
+- The Copilot icon in Outlook, Word, Excel, Teams = M365 Copilot (Approved). The Copilot app on your personal phone signed in with a personal MSA = Consumer Copilot (**Prohibited** for work data)
+- Before approving Copilot rollout in your team, verify your org has the Minimum Baseline (Purview DLP, sensitivity labels, Conditional Access) — see `adapters/microsoft-copilot/README.md`
+- A manager onboarding example is available at `examples/user-setup/manager-setup.md`
 
 ---
 

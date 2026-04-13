@@ -40,6 +40,7 @@
   "ai_execution_environment": {
     "type": "public"
   },
+  "//ai_tools": "List the per-developer AI tools used in this project. Microsoft Copilot scenarios (M365 Copilot, Copilot Chat, Power Platform Copilot) are admin-enforced via Purview DLP and Entra — they govern at the tenant layer, not via this config. See adapters/microsoft-copilot/canonical-reference-table.md.",
   "ai_tools": ["claude-code"],
   "confirmed_date": null
 }

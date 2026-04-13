@@ -2,6 +2,8 @@
 
 **Purpose:** Business context and terminology that helps AI tools understand the project.
 
+> This file is a *supporting* context file, not an entry point. The session-start governance protocol lives in your tool's entry-point file (`CLAUDE.md`, `CURSOR.md`, `GROK.md`, `ENTRY_POINT_TEMPLATE.md`, etc.). For the user-side verification check, see `USER_VERIFICATION.md`.
+
 ---
 
 ## Project Overview

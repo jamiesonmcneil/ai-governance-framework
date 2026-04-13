@@ -16,7 +16,7 @@ Defines how AI is actually used, not just policy, risk, or compliance.
 - Daily behavioral rules → `RULES.md`
 - How to interact with AI → `INTERACTION_PROTOCOL.md`
 - **Verify AI loaded governance** → `USER_VERIFICATION.md` (the one-second check every session)
-- **Per-tool enforcement** → `adapters/` (Claude Code hook, Microsoft Copilot admin controls, Cursor/Windsurf/Copilot/ChatGPT/Gemini/Grok)
+- **Per-tool enforcement** → `adapters/` (Claude Code SessionStart hook, Microsoft Copilot admin controls covering 7 scenarios incl. Power Platform, Cursor/Windsurf/GitHub Copilot/ChatGPT/Gemini/Grok)
 - Session & project continuity → `TRACKING.md`
 - Production safety → `PRODUCTION_SAFETY.md`
 

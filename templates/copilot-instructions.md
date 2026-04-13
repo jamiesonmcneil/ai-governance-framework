@@ -1,5 +1,14 @@
 # GitHub Copilot Instructions
 # Place this file at: .github/copilot-instructions.md
+#
+# Scope: This file governs **GitHub Copilot** only — Copilot Chat in IDE,
+# inline suggestions, and @workspace queries.
+#
+# This is NOT for Microsoft 365 Copilot, Copilot Chat with Entra,
+# Power Platform Copilot, or consumer Microsoft Copilot. Those are governed
+# admin-side via Purview DLP and the seven-scenario matrix in
+# /path/to/ai-governance-framework/adapters/microsoft-copilot/canonical-reference-table.md
+# — there is no per-project context file for those Copilot surfaces.
 
 ## Governance
 
@@ -37,3 +46,10 @@ AI assists decisions — humans remain accountable. AI output should not be the 
 - Every change must be testable end-to-end
 - Code compiling is NOT sufficient verification
 - Verify in the actual UI, not just the console
+
+## User Verification (Tier B fallback)
+
+GitHub Copilot enforcement is Tier B (instructions file). Inline suggestions in particular bypass these instructions. Users must:
+- Review every inline suggestion before accepting
+- For Copilot Chat: if a response violates a rule above, reply: `Review .github/copilot-instructions.md — this violates [specific rule].`
+- See /path/to/ai-governance-framework/USER_VERIFICATION.md for the full verification protocol.
