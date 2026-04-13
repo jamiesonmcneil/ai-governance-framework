@@ -212,7 +212,7 @@ If you use free or personal plans for anything work-related, opt out of training
 | Marketing copy | Any (no customer data involved) | Free is fine |
 | Learning / tutorials | Any | Free is fine (no sensitive data) |
 
-> **Microsoft Copilot scenarios:** M365 Copilot, Copilot Chat (free w/ Entra), browser personal Copilot, Consumer Copilot, and Power Platform Copilot are seven distinct scenarios with very different governance classifications. Always check `adapters/microsoft-copilot/canonical-reference-table.md` before pasting business data — "Copilot" alone is ambiguous. Personal-MSA Copilot scenarios are **Prohibited** for any work data regardless of how the tool is presented in the UI.
+> **Microsoft Copilot scenarios:** M365 Copilot, Copilot Chat (free w/ Entra), browser personal Copilot, Consumer Copilot, and Power Platform Copilot are seven distinct scenarios with very different governance classifications. Always check `adapters/microsoft-copilot/canonical-reference-table.md` before pasting business data — "Copilot" alone is ambiguous. Personal-MSA Copilot scenarios are **Prohibited** for any work data regardless of how the tool is presented in the UI. See `adapters/microsoft-copilot/` for admin guidance (DLP templates, scenario decision tree, admin baseline checklist).
 
 ---
 

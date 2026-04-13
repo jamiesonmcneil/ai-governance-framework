@@ -38,7 +38,7 @@ Config confirmed: [date]
 6. **Ask** the user: "Do these layers and paths look correct? Reply **YES** to continue."
 7. **Wait** for the user to reply **YES** (explicitly). Do not proceed with any work until confirmed.
 
-> **User-side verification (mandatory):** if the audit block above does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped.
+> **User-side verification (mandatory):** If the audit block from the Session Start Protocol does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped.
 
 ---
 

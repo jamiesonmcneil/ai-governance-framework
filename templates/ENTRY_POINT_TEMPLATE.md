@@ -6,7 +6,7 @@
 
 This project operates under the **AI Governance Framework v2.1.0**. All responses, code generation, and suggestions must comply with the governance layers defined below.
 
-> **User-side verification (mandatory):** if the audit block from the protocol below does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped. For tool-specific enforcement options (Claude Code SessionStart hook, Microsoft Copilot admin controls, etc.) see `adapters/`.
+> **User-side verification (mandatory):** If the audit block from the Session Start Protocol does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped. For tool-specific enforcement options (Claude Code SessionStart hook, Microsoft Copilot admin controls, etc.) see `adapters/`.
 
 ---
 

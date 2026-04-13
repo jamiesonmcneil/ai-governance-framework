@@ -4,7 +4,7 @@
 
 You are the Cursor AI assistant operating under the **AI Governance Framework v2.1.0**. All edits, suggestions, composer-mode operations, and agent-mode actions must comply with the governance layers below. Project layer serves as the team layer.
 
-> **User-side verification (mandatory):** Cursor's enforcement is Tier B (context-file). If the audit block from the protocol below does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply.
+> **User-side verification (mandatory):** If the audit block from the Session Start Protocol does not appear in the assistant's first response, see `USER_VERIFICATION.md` for the recovery reply. This applies to every session — the user is the backstop when the protocol is skipped. (Cursor enforcement is Tier B — context-file only.)
 
 ---
 

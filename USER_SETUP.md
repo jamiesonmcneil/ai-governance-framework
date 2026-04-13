@@ -40,7 +40,7 @@ If you remember nothing else, remember these three.
 | Gemini | myactivity.google.com/product/gemini > turn OFF "Gemini Apps Activity" |
 | Cursor | Settings > General > enable Privacy Mode |
 | Microsoft Copilot (consumer / personal MSA) | copilot.microsoft.com > Settings — and **do not use for work data**, this tier is Prohibited |
-| M365 Copilot / Copilot Chat (Entra work account) | No user-side opt-out needed — Enterprise Data Protection (EDP) is admin-enforced. Confirm with IT that Purview DLP and tenant settings are configured. See `adapters/microsoft-copilot/canonical-reference-table.md` |
+| M365 Copilot / Copilot Chat (Entra work account) | No user-side opt-out needed — Enterprise Data Protection (EDP) is admin-enforced. Confirm with IT that Purview DLP and tenant settings are configured. See `adapters/microsoft-copilot/` for admin guidance (canonical scenario table + DLP starter policies). |
 
 Do this now. It takes 30 seconds per tool.
 
@@ -83,7 +83,7 @@ You use AI to analyze data, draft reports, or summarize information.
 **Microsoft Copilot guidance:**
 - M365 Copilot (licensed) is the **preferred tool for analyzing tenant data** — it grounds on your SharePoint/email/Teams under EDP, with full audit
 - Copilot Chat (free w/ Entra) is Approved (Limited) — fine for general analysis questions, **not** for pasting regulated/customer data
-- Always confirm M365 Copilot has DLP and sensitivity labels configured before regulated data — see `adapters/microsoft-copilot/canonical-reference-table.md`
+- Always confirm M365 Copilot has DLP and sensitivity labels configured before regulated data — see `adapters/microsoft-copilot/` for admin guidance (canonical scenario table + DLP templates)
 
 ### General AI User
 
