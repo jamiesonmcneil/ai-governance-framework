@@ -55,7 +55,7 @@ We keep public releases stable and infrequent while allowing continuous refineme
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
 - **Semantic versions** (`v2.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-governance/config.json` schema. Breaking changes will always include migration notes.
 
-**Current stable release:** `v2.0.0` — Centralized Layer Architecture (April 2026)
+**Current stable release:** `v2.1.0` — Enforcement tiers + reliable session start (April 2026)
 
 **Key principles**:
 - `.ai-governance/config.json` schema remains stable for the entire v2.x series.
