@@ -2,7 +2,21 @@
 
 **Tier C — Admin-enforced. No session-level hook available.**
 
-Last Reviewed: 2026-04-12 | Next Review Due: 2026-07-12
+Last Reviewed: 2026-04-13 | Next Review Due: 2026-07-13
+
+## Documents in This Adapter
+
+| Document | Purpose |
+|----------|---------|
+| `README.md` (this file) | Overview of the adapter and the admin-enforcement model |
+| `canonical-reference-table.md` | Authoritative 7-scenario matrix (EDP, training, audit, classification per scenario) |
+| `tier-classification.md` | User-facing decision tree — which scenario am I in right now? |
+| `enforcement-mapping.md` | Framework rule → specific Microsoft control, with exact settings and UI paths |
+| `dlp-policy-template.md` | Walk-through of the seven Purview DLP policies (Copilot Chat + Power Platform) with 8-week rollout plan |
+| `sensitivity-label-template.md` | Full definition of the "Highly Confidential — No AI" MIP label |
+| `audit-queries.md` | KQL queries (Sentinel / Purview Audit) that verify each control is actually enforcing (Rule 1) |
+
+The admin-side adoption path is typically: read `canonical-reference-table.md` first → read `README.md` (this) → deploy via `dlp-policy-template.md` → lock down with `sensitivity-label-template.md` → verify with `audit-queries.md` → cross-check alignment to framework rules via `enforcement-mapping.md`.
 
 ---
 

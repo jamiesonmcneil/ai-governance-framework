@@ -4,7 +4,14 @@
 
 This is a template. Every organization must adapt it to its own regulatory obligations, data classification scheme, and risk tolerance. Work with your compliance, privacy, and security teams before deploying.
 
-Last Reviewed: 2026-04-12 | Next Review Due: 2026-07-12
+**Companion documents** (read in this order for full adoption):
+1. `canonical-reference-table.md` — which scenarios we're governing
+2. `enforcement-mapping.md` — rule → control mapping, so every policy below traces to a framework rule
+3. This document — policy-by-policy admin walkthrough
+4. `sensitivity-label-template.md` — the "Highly Confidential — No AI" label referenced by Policy 2 below
+5. `audit-queries.md` — verification queries for every policy below (Rule 1 verification is non-optional)
+
+Last Reviewed: 2026-04-13 | Next Review Due: 2026-07-13
 
 ---
 
