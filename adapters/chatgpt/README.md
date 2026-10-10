@@ -67,7 +67,7 @@ Tier B enforcement. Users must verify responses reference governance when releva
 | ChatGPT tier | Trains on input? | Approved for work? |
 |--------------|------------------|---------------------|
 | Free | Yes by default | **No** — consumer tier |
-| Plus (personal) | Yes by default (opt-out available) | **No** for org work |
+| Plus (personal) | Yes by default (opt-out available) | **No** for org work, unless the organization approved it under `AI_ENVIRONMENTS.md`; never for regulated data |
 | Team | No | Yes |
 | Enterprise | No | Yes |
 | API | No | Yes |

@@ -160,7 +160,7 @@ If a pattern exists, use it. If it exists 3+ times, extract to a shared utility.
 - Follow OWASP Top 10 practices
 
 ### AI-Specific Security (OWASP LLM Top 10)
-- **Never paste credentials, API keys, PII, or proprietary algorithms into AI prompts** (LLM02: Sensitive Information Disclosure)
+- **Never paste credentials, API keys, PII, or proprietary algorithms into AI prompts** (LLM02: Sensitive Information Disclosure), except proprietary code or logic in an environment the organization approved for it (`AI_ENVIRONMENTS.md`)
 - Treat ALL AI-generated code as untrusted input — review before merge (LLM05: Improper Output Handling)
 - Apply principle of least privilege to AI tool permissions (LLM06: Excessive Agency)
 - Verify all AI-generated technical claims — AI tools fabricate API references, function names, and configuration options (LLM09: Misinformation)
@@ -172,7 +172,7 @@ If a pattern exists, use it. If it exists 3+ times, extract to a shared utility.
 
 ### AI Execution Environment
 - **Sensitive data must only be processed in environments approved for its classification.** Customer data, PII, financial data, and regulated information must not reach public AI tools.
-- **Public AI tools must not be used for sensitive data** — regardless of plan tier or opt-out settings.
+- **Public AI tools must not be used for sensitive data** — regardless of plan tier or opt-out settings, unless the organization approved that account for that data under `AI_ENVIRONMENTS.md`.
 - **Enterprise AI may be used where approved by organizational policy** — with verified agreements, compliance certifications, and access controls in place.
 - **External enterprise AI APIs (Claude API, OpenAI API, Bedrock, etc.) may be used only when approved and aligned with data classification** — "no training" policies reduce risk but do not eliminate exposure, compliance obligations, or accountability.
 - **Self-hosted AI is required for data restricted to internal processing** — but self-hosted does not mean safe. Internal AI still requires verification, logging, access controls, and all governance rules.

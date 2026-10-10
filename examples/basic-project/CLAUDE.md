@@ -30,7 +30,7 @@ Precedence: Core (immutable) → Project
 
 ## Key Principles
 
-- Use only approved tools and accounts for work data — no personal AI accounts or unapproved extensions
+- Use only approved tools and accounts for work data — no personal AI accounts unless the organization approved them (`AI_ENVIRONMENTS.md`), and no unapproved extensions
 - Match AI execution environment to data sensitivity — never process sensitive data through public AI
 - AI assists decisions — humans are accountable for outcomes
 

@@ -47,7 +47,7 @@ Never:
 
 ## What You Must NEVER Put Into Public or Unapproved AI Tools
 
-The following must NEVER be entered into public AI tools (ChatGPT free, Claude free, Gemini free, or any tool without an approved enterprise agreement):
+The following must NEVER be entered into public AI tools (ChatGPT free, Claude free, Gemini free, or any tool without an approved enterprise agreement or an organization approval under `AI_ENVIRONMENTS.md`):
 
 | Category | Examples | Why |
 |----------|----------|-----|
@@ -60,7 +60,7 @@ The following must NEVER be entered into public AI tools (ChatGPT free, Claude f
 
 **This applies to ALL input methods** — typed text, file uploads (PDFs, spreadsheets, images), voice input, and data accessed through plugins/integrations.
 
-Sensitive data may be processed in approved enterprise or self-hosted AI environments under organizational policy. See `AI_ENVIRONMENTS.md` for environment classification and the layered processing pattern.
+Sensitive data may be processed in approved enterprise or self-hosted AI environments under organizational policy, or in an account the organization approved for that data (`AI_ENVIRONMENTS.md`, Organization-approved accounts). See `AI_ENVIRONMENTS.md` for environment classification and the layered processing pattern.
 
 **If unsure whether something is safe to share, assume it is NOT and do not include it.**
 
@@ -106,7 +106,7 @@ Sensitive data may be processed in approved enterprise or self-hosted AI environ
 
 **Rules:**
 1. **Disable training on EVERY AI tool you use.** If the platform offers an opt-out setting, turn it off immediately — regardless of what plan you're on or what you use it for. There is no reason to let any AI provider train on your input. See the Opt-Out Checklist below.
-2. **For any work involving company code, customer data, or proprietary information — use a Team, Business, or Enterprise plan.** Free tiers train by default and may not honor opt-out in all cases. Never use free tiers for confidential work.
+2. **For any work involving company code, customer data, or proprietary information — use a Team, Business, or Enterprise plan, or an account type your organization approved for that data (`AI_ENVIRONMENTS.md`).** Free tiers train by default and may not honor opt-out in all cases. Never use free tiers for confidential work.
 
 ---
 
@@ -199,7 +199,7 @@ If you use free or personal plans for anything work-related, opt out of training
 
 | Scenario | Recommended Tool | Tier |
 |----------|-----------------|------|
-| Writing code at work | Claude Code, GitHub Copilot, Cursor | API / Business / Enterprise |
+| Writing code at work | Claude Code, GitHub Copilot, Cursor | API / Business / Enterprise, or an organization-approved account |
 | Quick personal question | Any chat interface | Free (with opt-out) |
 | Analyzing company documents | M365 Copilot (licensed) — tenant-grounded; or Claude Team/Enterprise / ChatGPT Team | Team+ only |
 | Summarizing email / SharePoint / Teams content | M365 Copilot (licensed) — only tool with native tenant grounding under EDP | M365 Copilot license required |
@@ -255,7 +255,7 @@ AI output must not be used as the sole basis for high-impact decisions.
 ## Quick Reference Card (The 5-Second Version)
 
 1. **Never paste secrets, PII, or proprietary data** into any AI tool
-2. **Use Team/Enterprise plans** for company work — free tiers train by default
+2. **Use Team/Enterprise plans, or an account your organization approved,** for company work — free tiers train by default
 3. **Opt out of training** on every platform you use — do it today
 4. **Verify everything AI generates** — it lies confidently
 5. **Report incidents immediately** — accidental disclosure is a security event

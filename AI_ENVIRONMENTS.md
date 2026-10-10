@@ -104,7 +104,28 @@ Examples: locally hosted models, on-premise inference servers, containerized AI 
 - Covered by documented policy or agreement
 - Aligned with applicable compliance requirements
 
-Individual users or developers may NOT self-approve environments for sensitive data processing.
+#### Organization-approved accounts and services
+
+An organization's accountable authority may approve a specific AI service and account type, including a paid
+individual account, as an approved environment for defined uses and data classifications. In a sole-owner
+organization the owner is that authority, and approving for the organization is not self-approval. Each
+approval:
+
+1. is recorded in the organization's governance, naming the service, the account type, the permitted uses and
+   data classifications, the controls it relies on, the approver and the effective date;
+2. relies on privacy, security, contractual and model-training controls suited to that data, which the
+   organization verifies before first use and keeps under review as the approval sets out;
+3. never covers credentials, secrets or keys, or Restricted data; covers personal data, third-party
+   confidential material or regulated data only through a service bound to the organization by a business
+   agreement that meets the organization's obligations for that data, so an individual account never covers
+   them;
+4. cannot weaken any universal requirement in this framework (secret scanning, verification, accountability,
+   production safety), and lower layers may only narrow it.
+
+A stricter organization, project or role rule always prevails. Without such an approval, the minimum
+environments below apply unchanged.
+
+Individual users or developers may NOT self-approve environments for sensitive data processing. (An organization's sole owner approving for the organization under Organization-approved accounts is not self-approval.)
 
 ---
 

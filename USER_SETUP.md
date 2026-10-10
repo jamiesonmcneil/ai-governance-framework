@@ -96,7 +96,7 @@ You use AI for writing, brainstorming, or everyday tasks.
 **Key rules for you:**
 - Don't paste internal company information into free-tier AI tools
 - Don't trust AI answers without checking — especially facts, names, and dates
-- Use Team or Enterprise plans for any work involving company data
+- Use Team or Enterprise plans, or an account type your organization has approved, for any work involving company data
 - If you are unsure whether something is sensitive, assume it is and do not include it
 
 ### Manager / Decision-Maker

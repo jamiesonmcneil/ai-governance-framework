@@ -7,7 +7,7 @@
 # All rules are mandatory. Categories (Critical/High/Standard/Behavioral) indicate impact, not priority.
 # Never paste credentials, PII, or proprietary data. See SELF_GOVERNANCE.md.
 # Match AI execution environment to data sensitivity. Never process sensitive data through public AI.
-# Use only approved tools and accounts for work data. No personal AI accounts or unapproved extensions.
+# Use only approved tools and accounts for work data. No personal AI accounts unless the organization approved them (`AI_ENVIRONMENTS.md`), and no unapproved extensions.
 # AI assists decisions — humans are accountable. AI output is not the sole basis for high-impact decisions.
 
 # === RULES ===

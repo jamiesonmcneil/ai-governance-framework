@@ -3,7 +3,7 @@
 **Version:** 2.1.0
 **License:** MIT
 
-![Version](https://img.shields.io/badge/version-2.1.0-blue)
+![Version](https://img.shields.io/badge/version-2.2.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Practical AI governance — focused on execution.

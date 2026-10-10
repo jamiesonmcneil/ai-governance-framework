@@ -8,7 +8,7 @@
 
 ## Key Rules
 
-- Use approved tools and accounts for work data — avoid personal or unapproved tools No personal AI accounts or unapproved extensions.
+- Use approved tools and accounts for work data — avoid personal or unapproved tools No personal AI accounts unless the organization approved them (`AI_ENVIRONMENTS.md`), and no unapproved extensions.
 - Match AI execution environment to data sensitivity. Never process sensitive data through public AI.
 - AI assists decisions — humans are accountable. AI output is not the sole basis for high-impact decisions.
 

@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.2.0] - 2026-10-10
+
+### Changed
+- `AI_ENVIRONMENTS.md`: new "Organization-approved accounts and services" under the Approval Requirement. An
+  organization's accountable authority may approve a specific AI service and account type (a paid individual
+  account included) for defined uses and data classifications, recorded in its governance, under a floor no
+  approval can lower: never credentials, secrets, keys or Restricted data; personal, third-party confidential or
+  regulated data only through a service under a business agreement; no universal requirement weakened; stricter
+  rules prevail. A sole owner approving for the organization is not self-approval.
+- `RULES.md` Rule 8, `SELF_GOVERNANCE.md`, `USER_SETUP.md`, `adapters/chatgpt/README.md`, `templates/cursorrules`
+  and `templates/windsurfrules`, and the `examples/basic-project` and `examples/lightweight-project` CLAUDE.md files: the
+  plan-tier statements now admit an organization-approved account.
+
+### Why
+The plan-tier rule assumed every organization buys a Team or Enterprise plan. A sole-owner company holds only
+individual paid accounts, and had no way to approve one under its own accountable authority. Grounding:
+ISO/IEC 27001:2022 Annex A 5.23 (the organization decides which cloud services it uses and on what terms) and
+NIST AI RMF GOVERN 1 (risk decisions by an accountable authority).
+
+### Migration
+No change for any organization until it records an approval. Dependents walked per CONTRIBUTING:
+`examples/acme-org/TECH_STACK.md` and `adapters/microsoft-copilot/canonical-reference-table.md` state no plan rule
+and are unchanged.
+
+---
 ## [2.1.0] - 2026-04-13
 
 ### Added
