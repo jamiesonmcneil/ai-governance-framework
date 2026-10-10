@@ -120,7 +120,7 @@ Before any production modification, document:
 - [ ] Disk space verified on target server (`df -h /` — builds and deploys need free space)
 
 ### Deployment Rules
-- Never deploy on Fridays (unless emergency)
+- Never deploy on Fridays (unless emergency), unless the organization's own PRODUCTION_SAFETY explicitly lifts this limit for its work
 - Never deploy during business hours without stakeholder awareness
 - Always verify the deployment succeeded (health check, smoke test)
 - Keep the previous version available for immediate rollback

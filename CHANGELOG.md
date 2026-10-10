@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.2.1] - 2026-10-10
+
+### Changed
+- `PRODUCTION_SAFETY.md` Deployment Rules: "Never deploy on Fridays (unless emergency)" stays the default, and an
+  organization's own PRODUCTION_SAFETY may now lift it explicitly for its work.
+
+### Why
+A Friday freeze protects teams whose people are not around at the weekend to handle a bad release. A sole-owner
+venture that deploys and watches its own releases gets no protection from it, while an employer's teams still do.
+The owner decides per organization; the default is unchanged for every organization that says nothing.
+
+### Migration
+No change for any organization until its PRODUCTION_SAFETY lifts the limit. Dependents walked per CONTRIBUTING:
+`templates/CLAUDE.md`, `templates/CURSOR.md`, `templates/GROK.md` and `templates/ENTRY_POINT_TEMPLATE.md` reference
+the CONFIRM PRODUCTION protocol only and are unchanged.
+
+---
 ## [2.2.0] - 2026-10-10
 
 ### Changed
