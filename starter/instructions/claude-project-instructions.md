@@ -1,6 +1,7 @@
-# Paste-in instructions: Claude chat Projects
+# Paste-in instructions: Claude (Cowork and chat)
 
-Copy everything below the line into your Claude Project's instructions. Replace the bracketed fields. The text below the line is about 1,900 characters;
+Copy everything below the line into one of: Cowork Global instructions (Settings > Cowork), a Cowork or chat
+Project's instructions, or Settings > "Instructions for Claude". See `adapters/claude-cowork/README.md`. Replace the bracketed fields. The text below the line is about 1,900 characters;
 check your tool's instruction limit. Source rules: `RULES.md`, `SELF_GOVERNANCE.md`,
 `PRODUCTION_SAFETY.md` in this framework.
 

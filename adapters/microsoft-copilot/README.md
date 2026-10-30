@@ -25,16 +25,34 @@ The admin-side adoption path is typically: read `canonical-reference-table.md` f
 Unlike Claude Code, Cursor, or GitHub Copilot, Microsoft Copilot is **not a developer tool with a session model**. It is embedded in Word, Excel, Outlook, Teams, and a web chat interface. It has:
 
 - No project root, no `.ai-governance/` folder
-- No context file analogous to `CLAUDE.md` or `.cursorrules`
+- No project context file analogous to `CLAUDE.md` or `.cursorrules` (per-user instructions exist; see "Instructions in Copilot Chat and the desktop app" below)
 - No lifecycle hooks
 - No per-session initialization
 
-This means **tier A (harness-enforced) and tier B (context file) enforcement are not available**. The framework's Session Start Protocol cannot be pushed to the model — there is no "session" and no file loader.
+This means **tier A (harness-enforced) enforcement is not available**, and tier B exists only per person or per agent (below), never pushed by an admin. The framework's Session Start Protocol cannot be pushed to the model — there is no "session" and no file loader.
 
 Enforcement for Microsoft Copilot is entirely **admin-side and user-discipline-side**:
 
 - Admin-side: Microsoft Purview DLP, sensitivity labels, Entra conditional access, Copilot Control System, Restricted SharePoint Search
 - User-side: tier awareness (which Copilot you are using), data-classification discipline, organizational training
+
+---
+
+## Instructions in Copilot Chat and the desktop app
+
+Most staff use Copilot in the Microsoft 365 Copilot app (desktop or web) and inside Word, Excel, Outlook and
+Teams, not in a terminal. Three places take standing instructions (checked 2026-10-30 against
+support.microsoft.com and learn.microsoft.com; settings move between releases):
+
+| Place | Path | Notes |
+|---|---|---|
+| **Custom instructions** | Copilot Chat > "..." (Settings and more) > Chat settings > Personalization > Custom instructions | Per person; can be switched off by the user. No published character limit found. |
+| **Agent** (Agent Builder) | Create an agent; paste into Instructions; add knowledge files | Instructions up to 8,000 characters. Share with named people or the organization; admins control org-wide sharing and catalog publishing in the Microsoft 365 admin center. |
+| **Notebook** | In a Copilot Notebook: More options > Instructions | Instructions plus reference files from Microsoft 365. |
+
+Use `starter/instructions/m365-copilot-instructions.md` as the text. For a team, an agent that the organization
+publishes with fixed instructions is the closest thing to shared governance: no documented admin control pushes
+custom instructions to every user. Instructions guide behavior; the admin controls below protect the data.
 
 ---
 

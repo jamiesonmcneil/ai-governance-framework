@@ -53,6 +53,7 @@ This framework is intentionally strict. Every rule exists because of a real-worl
 | `USER_SETUP.md` | `starter/README.md` (training opt-out pointer) | Setup steps reference it |
 | `README.md` (config schema, layer model, Session Start Protocol) | `starter/.ai-governance/config.json`, `starter/CLAUDE.md.template` | The starter config and protocol follow the documented schema |
 | `starter/.ai-governance/roles/_TEMPLATE.md` | Every role file in `starter/.ai-governance/roles/`, `starter/.ai-governance/roles/README.md`, `starter/README.md` role list, `starter/CLAUDE.local.md.example` role list, `USER_SETUP.md` role pointer | All role files share the template's shape |
+| `adapters/claude-cowork/README.md` | `adapters/README.md` tier table, `PLATFORM_SETUP.md` Cowork section, `starter/README.md` Cowork setup, `starter/instructions/claude-project-instructions.md` header | Cowork setting paths appear in all four |
 | `CHANGELOG.md` | `README.md` (version badge + "Current stable release" line), git tag | Version bumps: CHANGELOG first, then README, then tag |
 
 **Checklist sequence when editing Core:**

@@ -1,9 +1,9 @@
 # AI Governance Framework
 
-**Version:** 2.3.0
+**Version:** 2.4.0
 **License:** MIT
 
-![Version](https://img.shields.io/badge/version-2.3.0-blue)
+![Version](https://img.shields.io/badge/version-2.4.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Practical AI governance — focused on execution.
@@ -11,13 +11,13 @@ Practical AI governance — focused on execution.
 Defines how AI is actually used, not just policy, risk, or compliance.
 
 **Quick Navigation**
-- **Set up a team today** → `starter/README.md` (Claude Code, Claude chat, Microsoft 365 Copilot; role placeholders included)
+- **Set up a team today** → `starter/README.md` (Claude Cowork, Microsoft 365 Copilot, Claude chat, Claude Code; role placeholders included)
 - New user? → `USER_SETUP.md` (5-minute onboarding for any role)
 - Core safety boundary → `SELF_GOVERNANCE.md` (read this first)
 - Daily behavioral rules → `RULES.md`
 - How to interact with AI → `INTERACTION_PROTOCOL.md`
 - **Verify AI loaded governance** → `USER_VERIFICATION.md` (the one-second check every session)
-- **Per-tool enforcement** → `adapters/` (Claude Code SessionStart hook, Microsoft Copilot admin controls covering 7 scenarios incl. Power Platform, Cursor/Windsurf/GitHub Copilot/ChatGPT/Gemini/Grok)
+- **Per-tool enforcement** → `adapters/` (Claude Code SessionStart hook, Claude Cowork instructions and org plugins, Microsoft Copilot instructions and admin controls covering 7 scenarios incl. Power Platform, Cursor/Windsurf/GitHub Copilot/ChatGPT/Gemini/Grok)
 - Session & project continuity → `TRACKING.md`
 - Production safety → `PRODUCTION_SAFETY.md`
 
@@ -57,7 +57,7 @@ We keep public releases stable and infrequent while allowing continuous refineme
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
 - **Semantic versions** (`v2.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-governance/config.json` schema. Breaking changes will always include migration notes.
 
-**Current stable release:** `v2.3.0`: the starter kit (`starter/`) with fill-in organization and project layers, role placeholders and paste-in instructions for Claude and Microsoft 365 Copilot (October 2026). See `CHANGELOG.md`.
+**Current stable release:** `v2.4.0`: Claude Cowork and Microsoft 365 Copilot desktop setup without a terminal, on top of the starter kit (`starter/`) with fill-in organization and project layers, role placeholders and paste-in instructions for Claude and Microsoft 365 Copilot (October 2026). See `CHANGELOG.md`.
 
 **Key principles**:
 - `.ai-governance/config.json` schema remains stable for the entire v2.x series.

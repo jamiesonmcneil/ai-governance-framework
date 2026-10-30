@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.4.0] - 2026-10-30
+
+### Added
+- `adapters/claude-cowork/`: governance in the Claude desktop app's Cowork mode without a terminal (Global,
+  folder and Project instructions; organization plugins and skills; permission modes; what is not enforced).
+
+### Changed
+- `adapters/microsoft-copilot/README.md`: new section "Instructions in Copilot Chat and the desktop app"
+  (custom instructions, agents, Notebooks). The earlier "no context file" wording now says per-person
+  instructions exist and that no admin control pushes them to every user.
+- `starter/`: Cowork first-class in the README and paste-in text; Microsoft 365 Copilot steps give the
+  setting path. `adapters/README.md` and `PLATFORM_SETUP.md` tier tables list Cowork.
+
+### Why
+Many people adopting the framework work in the Claude desktop app and Microsoft 365 Copilot, not in a terminal.
+
+### Migration
+None. Dependents walked per CONTRIBUTING; new row for the Cowork adapter.
+
+---
 ## [2.3.0] - 2026-10-30
 
 ### Added

@@ -2,7 +2,7 @@
 
 **How the governance framework is enforced on each AI tool.**
 
-Last Reviewed: 2026-04-12 | Next Review Due: 2026-07-12 (90-day cycle)
+Last Reviewed: 2026-10-30 | Next Review Due: 2027-01-28 (90-day cycle)
 
 ---
 
@@ -38,7 +38,8 @@ The `templates/` folder (at the repo root) contains the portable prose content �
 | Tool | Tier | Mechanism | See |
 |------|------|-----------|-----|
 | **Claude Code** (CLI / Desktop / Web / IDE) | A | `SessionStart` hook in `.claude/settings.json` | `claude-code/` |
-| **Microsoft Copilot** (7 scenarios — see matrix) | C | Purview DLP, sensitivity labels, Copilot Control System, Conditional Access, Power Platform admin DLP. No session hook — admin + user discipline only. | `microsoft-copilot/` (start with `canonical-reference-table.md`) |
+| **Microsoft Copilot** (7 scenarios — see matrix) | C (B per person) | Per-person custom instructions, agents and Notebook instructions for behavior; Purview DLP, sensitivity labels, Copilot Control System, Conditional Access, Power Platform admin DLP. No session hook — admin + user discipline only. | `microsoft-copilot/` (start with `canonical-reference-table.md`) |
+| **Claude Cowork** (desktop app agent mode) | B | Global, folder and Project instructions; Team and Enterprise owners manage plugins and skills | `claude-cowork/` |
 | **Cursor** | B | `.cursorrules` file | `cursor/` |
 | **Windsurf** | B | `.windsurfrules` file | `windsurf/` |
 | **GitHub Copilot** | B | `.github/copilot-instructions.md` | `github-copilot/` |

@@ -1,10 +1,11 @@
 # Starter kit: governance a team can use today
 
-A copy-ready set of files that puts this framework in front of your AI tools in about ten minutes. It works in
-three places:
+A copy-ready set of files that puts this framework in front of your AI tools in about ten minutes. Nothing here
+needs a terminal except the Claude Code option. It works in four places:
 
 | Where you use AI | What you set up | Enforcement |
 |---|---|---|
+| Claude Cowork (desktop app) | Paste `instructions/claude-project-instructions.md` into Cowork's Global instructions | The model reads them. Organizations on Team or Enterprise also control plugins, skills and connectors (`adapters/claude-cowork/`). |
 | Claude Code (terminal, IDE, desktop) | `CLAUDE.md` and `.ai-governance/` in the repository | Rules load at every session start. Add the hook in `adapters/claude-code/` for harness-level checks. |
 | Claude chat (claude.ai Projects) | Paste `instructions/claude-project-instructions.md` into the project's instructions | The model reads them. Nothing blocks a mistake. |
 | Microsoft 365 Copilot | Paste `instructions/m365-copilot-instructions.md` where your Copilot accepts instructions | The model reads them. Real control is your admin's (see `adapters/microsoft-copilot/`). |
@@ -77,6 +78,16 @@ it from `.ai-governance/core/starter/` as a nested CLAUDE.md.
 If everyone in a repository works in one role (a service repository with only developers, say), import that
 role directly in `CLAUDE.md` instead of per person.
 
+### Claude Cowork (desktop app, no terminal)
+
+1. Use the Claude desktop app signed in with the account type your organization approved for work data.
+2. Open Settings > Cowork and edit Global instructions (newer layouts: Settings > "Instructions for Claude").
+   Paste the text from `instructions/claude-project-instructions.md` and fill in the brackets.
+3. Paste your role's **Active rules** under "My role". Use folder or Project instructions for rules that apply to
+   one folder or project only.
+4. Ask Cowork "What rules are you following for my work?" to check they took. Details:
+   `adapters/claude-cowork/README.md`.
+
 ### Claude chat (Projects)
 
 1. Use a Claude account type your organization approved for work data (`AI_ENVIRONMENTS.md`). Turn off model
@@ -89,9 +100,11 @@ role directly in `CLAUDE.md` instead of per person.
 
 1. Use Copilot signed in with your work account. A personal Microsoft account is a different product with
    different data terms; see `adapters/microsoft-copilot/canonical-reference-table.md`.
-2. If your Copilot offers custom instructions, or you can create an agent with its own instructions, paste the
-   text from `instructions/m365-copilot-instructions.md` there. If neither is available, keep the rules in a
-   document you reread; the admin controls in `adapters/microsoft-copilot/` do the enforcing.
+2. In the Microsoft 365 Copilot app (desktop or web): Copilot Chat > "..." > Chat settings > Personalization >
+   Custom instructions. Paste the text from `instructions/m365-copilot-instructions.md` and your role's active
+   rules. For a team, build one agent with the same text as its instructions and share it. If your
+   organization has turned these off, keep the rules in a document you reread; the admin controls in
+   `adapters/microsoft-copilot/` do the enforcing.
 3. Admins: the DLP, sensitivity label and audit templates in `adapters/microsoft-copilot/` are where the hard
    controls are.
 

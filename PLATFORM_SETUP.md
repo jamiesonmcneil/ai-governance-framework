@@ -19,7 +19,7 @@ Before choosing a tool for governed work, understand its enforcement strength:
 | Tier | Mechanism | Reliability | Tools |
 |------|-----------|-------------|-------|
 | **A** | Harness-level hook injects a live instruction at session start | Strong | Claude Code (`SessionStart` hook) |
-| **B** | Tool auto-reads a context file; model compliance drifts on short prompts | Medium | Cursor, Windsurf, GitHub Copilot, ChatGPT Projects, Gemini system instruction, Grok |
+| **B** | Tool auto-reads a context file; model compliance drifts on short prompts | Medium | Claude Cowork (instructions), Cursor, Windsurf, GitHub Copilot, ChatGPT Projects, Gemini system instruction, Grok |
 | **C** | No in-session mechanism; enforcement is organizational (DLP, admin controls, sensitivity labels) | Strong for data protection, weak for behavior | Microsoft Copilot (all tiers) |
 | **D** | User pastes governance at start of each session | Weak | Any tool with no native config |
 
@@ -121,6 +121,12 @@ Edit to fill in project-specific context. Claude Code reads `CLAUDE.md` automati
 
 **Memory:** Claude Code supports persistent memory in `~/.claude/projects/[project]/memory/`. Use for user preferences and feedback. Do NOT store credentials.
 
+### Claude Cowork (desktop app) — Tier B
+
+No terminal needed. Paste `starter/instructions/claude-project-instructions.md` into Global instructions
+(Settings > Cowork), add your role's active rules, and use folder or Project instructions for narrower rules.
+Organizations on Team or Enterprise manage shared plugins and skills. See `adapters/claude-cowork/README.md`.
+
 ### Claude (Web / API)
 
 **System prompt:** Include the contents of `RULES.md` in the system prompt or as the first message. For long conversations, remind Claude of key rules periodically.
@@ -180,7 +186,7 @@ Full rules: .ai-governance/config.json → Core layer → RULES.md
 
 ## Microsoft Copilot (Consumer / Entra / M365) — Tier C enforcement
 
-**No context file, no hook. Enforcement is admin-side only.**
+**No project context file, no hook. Data enforcement is admin-side.** Per-person behavior rules go in custom instructions, an agent or a Notebook: see "Instructions in Copilot Chat and the desktop app" in `adapters/microsoft-copilot/README.md` and paste `starter/instructions/m365-copilot-instructions.md`.
 
 Microsoft Copilot is a different product category. It has no project root, no `.ai-governance/` folder, no lifecycle hooks. Enforcement happens through:
 

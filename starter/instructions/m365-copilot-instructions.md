@@ -1,7 +1,14 @@
 # Paste-in instructions: Microsoft 365 Copilot
 
-Copy everything below the line into the instructions field your Copilot offers (custom instructions, or the
-instructions of an agent you create), if your organization has enabled one. Replace the bracketed fields. The text
+Copy everything below the line into one of these (Microsoft 365 Copilot app, desktop or web):
+- **Custom instructions:** Copilot Chat > "..." (Settings and more) > Chat settings > Personalization > Custom
+  instructions > Edit instructions. Applies to your own chats.
+- **An agent** (Agent Builder): paste into the agent's Instructions (up to 8,000 characters) and add your role file
+  as knowledge. Share it with your team so everyone uses the same rules.
+- **A Copilot Notebook:** More options > Instructions.
+If your organization has turned a feature off, use what is available and keep the rules in a document you reread.
+
+Replace the bracketed fields. The text
 below the line is about 1,600 characters; check your tool's instruction limit.
 
 These instructions guide the model; they do not enforce anything. The controls that do (Purview DLP,
