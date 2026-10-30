@@ -20,6 +20,7 @@
     },
     "user": {
       "path": "CLAUDE.local.md",
+      "//": "In this starter the user layer is the gitignored CLAUDE.local.md file rather than a user/ folder, because Claude Code loads it natively.",
       "gitignored": true,
       "description": "Each person's role selection and preferences (cannot weaken rules)"
     }
@@ -38,7 +39,7 @@
   "compliance_frameworks": [],
   "production_environment": null,
   "ai_execution_environment": {
-    "type": "[public | enterprise | self-hosted]"
+    "type": "[public | enterprise | self_hosted | air_gapped | layered]"
   },
   "ai_tools": ["claude-code", "claude-chat", "m365-copilot"],
   "confirmed_date": null

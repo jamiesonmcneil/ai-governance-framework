@@ -27,7 +27,7 @@ Only these tools and account types may be used for work. Anything not listed is 
 | Public | [published material] | Any approved tool |
 | Internal | [internal docs, most source code] | [tools] |
 | Confidential | [customer data, contracts, financials] | [tools, or none] |
-| Restricted | [credentials, regulated data, legal privilege] | Never into an AI tool |
+| Restricted | [credentials, regulated data, legal privilege] | Only a self-hosted or air-gapped tool approved for Restricted data (`AI_ENVIRONMENTS.md`); otherwise never. Credentials never, in any tool. |
 
 When unsure which class applies, treat it as the stricter one and ask [contact].
 

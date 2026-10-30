@@ -15,10 +15,11 @@ it. Approved by: [governance owner], [date].
 [List actions this role's AI use must stop and ask about. Core already requires CONFIRM PRODUCTION for
 production changes.]
 
-<!-- EXAMPLE (inactive): rules a general team might adopt
+<!-- EXAMPLE (inactive): rules a non-technical team might adopt
 - Use only the AI tools and account types listed as approved in the organization layer.
 - Never paste passwords, customer details, contracts, financial data or anything marked confidential into an AI tool not approved for it.
 - Check facts, names, numbers, dates and links in AI output before using them.
 - Read every AI-drafted message in full before sending; you are the author.
+- Never upload someone else's document, email or recording into an AI tool without their permission and an approved tool.
 - When unsure whether something is sensitive, treat it as sensitive and ask [contact].
 -->

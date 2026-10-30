@@ -3,15 +3,16 @@
 ## [2.3.0] - 2026-10-30
 
 ### Added
-- `starter/`: a copy-ready kit a team can use the same day. `CLAUDE.md` for Claude Code imports Core
-  (`RULES.md`, `SELF_GOVERNANCE.md`, `FORBIDDEN.md`, `PRODUCTION_SAFETY.md`) and the organization, project and
-  role layers by relative path; `CLAUDE.local.md.example` is each person's file for choosing a role.
+- `starter/`: a copy-ready kit a team can use the same day. `CLAUDE.md.template` for Claude Code imports the
+  seven session-start Core files and the organization, project and role layers by relative path, and keeps the
+  Session Start Protocol (confirmation block and YES); `CLAUDE.local.md.example` is each person's file for choosing a role.
 - `starter/.ai-governance/org/ORG_RULES.md` and `project/PROJECT_RULES.md`: fill-in organization and project
   layers (approved tools and accounts, data classes, contacts, production, stack, definition of done).
 - `starter/.ai-governance/roles/`: placeholders for nine roles (developer, QA/tester, architect, security,
   IT/operations, business analyst, project/product manager, data analyst, general staff) plus a template. Each
   has an empty **Active rules** section; generic rules sit in `<!-- EXAMPLE ... -->` blocks and are inactive
-  until a team adopts them.
+  until a team adopts them. Claude Code strips those comments before the model sees them; the entry point and
+  paste-in texts also tell the model to ignore them where a tool does not.
 - `starter/instructions/`: paste-in instructions for Claude chat Projects and Microsoft 365 Copilot.
 
 ### Why

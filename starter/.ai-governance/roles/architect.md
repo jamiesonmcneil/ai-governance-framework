@@ -15,7 +15,7 @@ it. Approved by: [governance owner], [date].
 [List actions this role's AI use must stop and ask about. Core already requires CONFIRM PRODUCTION for
 production changes.]
 
-<!-- EXAMPLE (inactive): rules a architecture team might adopt
+<!-- EXAMPLE (inactive): rules an architecture team might adopt
 - Every significant design decision is recorded (context, decision, alternatives considered, consequences).
 - Vendor, product, pricing and version facts from AI are checked against current vendor sources before they go into a design.
 - Every design states the strongest case against it, from the point of view of a named critical reviewer.

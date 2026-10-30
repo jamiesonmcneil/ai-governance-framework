@@ -20,4 +20,5 @@ production changes.]
 - Every figure in a report is checked against the source query or file; AI arithmetic is recomputed.
 - AI-written queries run against read-only access first and are checked for row counts and joins before results are used.
 - Reports state the data source, the date range and any filter applied.
+- Exported or shared outputs contain no personal data unless the recipient is approved to see it.
 -->

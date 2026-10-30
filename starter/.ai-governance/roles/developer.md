@@ -26,4 +26,6 @@ production changes.]
 - Report exactly what was run, where, on what data, and which relevant cases were not exercised. "Compiles" is not "works".
 - A person reviews AI-written code before it merges. New dependencies are checked for existence, maintenance and license before they are added.
 - Never point development or test code at production data or systems.
+- Never commit or paste secrets; run a secret scan before every commit.
+- The AI never pushes to a protected branch or deploys; a person does, through the release process.
 -->

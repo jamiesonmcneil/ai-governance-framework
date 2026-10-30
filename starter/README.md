@@ -17,7 +17,7 @@ the model: tool settings, admin policy, access rights, or a hook.
 
 ```
 starter/
-  CLAUDE.md                          Claude Code entry point (imports the layers below)
+  CLAUDE.md.template                 Claude Code entry point; copy to CLAUDE.md (imports the layers below)
   CLAUDE.local.md.example            Your personal file: pick your role, add your own preferences
   .ai-governance/
     config.json                      Which layers apply, in which order
@@ -51,17 +51,28 @@ Roles included: `developer`, `qa-tester`, `architect`, `security`, `it-operation
 
 ### Claude Code
 
-1. Put the framework in your repository as `.ai-governance/core/`:
+Run these from your repository root (macOS, Linux or Git Bash on Windows).
+
+1. Add the framework as `.ai-governance/core/`:
    `git submodule add https://github.com/jamiesonmcneil/ai-governance-framework .ai-governance/core`
-   (or copy the files there if your organization does not allow submodules from outside).
-2. Copy `starter/CLAUDE.md` and `starter/.ai-governance/{config.json,org,project,roles}` into the repository
-   root. Keep the paths as they are; `CLAUDE.md` imports them by relative path.
-3. Fill in the bracketed fields in `org/ORG_RULES.md` and `project/PROJECT_RULES.md`. Delete what does not apply.
-4. Each person copies `CLAUDE.local.md.example` to `CLAUDE.local.md`, adds the one import line for their role
-   (the file shows how), and adds personal preferences. Add `CLAUDE.local.md` to `.gitignore`.
-5. Start Claude Code and ask "Which governance layers and role are loaded?". The answer should name Core, your
-   org and project files and your role. If it does not, check the import paths (`/memory` lists what loaded).
-6. Optional, stronger: install the SessionStart hook in `adapters/claude-code/`.
+   (or copy the framework's files there if your organization does not allow outside submodules).
+2. Copy the starter into place:
+   `cp .ai-governance/core/starter/CLAUDE.md.template CLAUDE.md`
+   `cp .ai-governance/core/starter/CLAUDE.local.md.example .`
+   `cp -R .ai-governance/core/starter/.ai-governance/. .ai-governance/`
+   `printf 'CLAUDE.local.md\n' >> .gitignore`
+3. Fill in the bracketed fields in `.ai-governance/org/ORG_RULES.md` and `.ai-governance/project/PROJECT_RULES.md`.
+   Delete what does not apply. Commit.
+4. Each person copies `CLAUDE.local.md.example` to `CLAUDE.local.md` and adds the one import line for their role
+   (the file shows how). `CLAUDE.local.md` stays out of git.
+5. Start Claude Code. The first reply shows the governance block listing Core, org, project, role and user; reply
+   YES if it is right. If a layer is missing, check the import paths (`/memory` lists what loaded).
+6. Optional, stronger: install the SessionStart hook in `adapters/claude-code/`. It reminds the model to run the
+   protocol at every start; it lists the core, org, project and user layers, and the role arrives through
+   `CLAUDE.local.md`.
+
+The starter's entry point is named `CLAUDE.md.template` inside the framework so that Claude Code does not load
+it from `.ai-governance/core/starter/` as a nested CLAUDE.md.
 
 If everyone in a repository works in one role (a service repository with only developers, say), import that
 role directly in `CLAUDE.md` instead of per person.
