@@ -1,0 +1,45 @@
+{
+  "//": "Starter config. Core (immutable, highest) > Org > Project > Role > User (lowest). The stricter rule wins on any conflict. Claude Code loads these through the imports in CLAUDE.md; other tools read this file as the map.",
+  "schema_version": "2.0",
+  "project_name": "[Project name]",
+
+  "layers": {
+    "core": {
+      "path": ".ai-governance/core",
+      "immutable": true,
+      "description": "The framework itself (git submodule or copy). Never edit in place."
+    },
+    "org": {
+      "path": ".ai-governance/org",
+      "enabled": true,
+      "description": "Organization rules: approved tools, data classes, contacts"
+    },
+    "project": {
+      "path": ".ai-governance/project",
+      "description": "Project rules: stack, environments, definition of done"
+    },
+    "user": {
+      "path": "CLAUDE.local.md",
+      "gitignored": true,
+      "description": "Each person's role selection and preferences (cannot weaken rules)"
+    }
+  },
+
+  "custom_layers": {
+    "role": {
+      "path": ".ai-governance/roles",
+      "description": "Role rules. Each person selects one in their user file. Loads after Project, before User."
+    }
+  },
+
+  "precedence_note": "Core (immutable, always highest) > Org > Project > Role > User (lowest). If any conflict, the stricter rule wins.",
+
+  "credential_storage": "[secrets manager or vault your organization uses]",
+  "compliance_frameworks": [],
+  "production_environment": null,
+  "ai_execution_environment": {
+    "type": "[public | enterprise | self-hosted]"
+  },
+  "ai_tools": ["claude-code", "claude-chat", "m365-copilot"],
+  "confirmed_date": null
+}

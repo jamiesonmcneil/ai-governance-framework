@@ -48,6 +48,8 @@ Do this now. It takes 30 seconds per tool.
 
 ## Choose How You Use AI
 
+Your team may also keep role rules in `starter/.ai-governance/roles/` (developer, QA, architect, security, IT/operations, business analyst, project manager, data analyst, general staff). Those add to what is below for your role.
+
 Pick the one that best describes your work:
 
 ### Developer

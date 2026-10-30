@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.3.0] - 2026-10-30
+
+### Added
+- `starter/`: a copy-ready kit a team can use the same day. `CLAUDE.md` for Claude Code imports Core
+  (`RULES.md`, `SELF_GOVERNANCE.md`, `FORBIDDEN.md`, `PRODUCTION_SAFETY.md`) and the organization, project and
+  role layers by relative path; `CLAUDE.local.md.example` is each person's file for choosing a role.
+- `starter/.ai-governance/org/ORG_RULES.md` and `project/PROJECT_RULES.md`: fill-in organization and project
+  layers (approved tools and accounts, data classes, contacts, production, stack, definition of done).
+- `starter/.ai-governance/roles/`: placeholders for nine roles (developer, QA/tester, architect, security,
+  IT/operations, business analyst, project/product manager, data analyst, general staff) plus a template. Each
+  has an empty **Active rules** section; generic rules sit in `<!-- EXAMPLE ... -->` blocks and are inactive
+  until a team adopts them.
+- `starter/instructions/`: paste-in instructions for Claude chat Projects and Microsoft 365 Copilot.
+
+### Why
+Teams adopting the framework need something usable today, with room for their own role rules, without
+designing the layer files from scratch. Example rules are shipped inactive so that no organization
+inherits a rule it did not choose.
+
+### Migration
+None. Nothing in Core changed and `config.json` keeps schema 2.0; the starter adds a `role` entry under
+`custom_layers`. Dependents walked per CONTRIBUTING: new rows added for the starter files.
+
+---
 ## [2.2.1] - 2026-10-10
 
 ### Changed

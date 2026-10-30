@@ -1,0 +1,24 @@
+# My settings (personal, not committed)
+
+Copy this file to `CLAUDE.local.md` at the repository root and add `CLAUDE.local.md` to `.gitignore`.
+Claude Code loads it after `CLAUDE.md`. It can add strictness and preferences; it cannot relax any rule above it.
+
+## My role
+
+Add one import line for your role on its own line below, written without backticks, for example
+`@.ai-governance/roles/developer.md`. One role per person; if you work in two, import both and the stricter
+rule wins where they differ. Roles: `developer`, `qa-tester`, `architect`, `security`, `it-operations`,
+`business-analyst`, `project-manager`, `data-analyst`, `general-staff` (files in `.ai-governance/roles/`).
+
+[Your role import goes here]
+
+## My preferences
+
+[Add preferences that do not change any rule, for example: "Answer in short paragraphs", "Use British spelling",
+"Show me the command before running anything that changes files".]
+
+<!-- EXAMPLE (inactive):
+- Lead with the answer; keep explanations short unless I ask for more.
+- When you are unsure what I mean, ask one question before starting.
+- Never send, post or publish anything on my behalf; give me the draft.
+-->

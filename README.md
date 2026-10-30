@@ -1,9 +1,9 @@
 # AI Governance Framework
 
-**Version:** 2.2.1
+**Version:** 2.3.0
 **License:** MIT
 
-![Version](https://img.shields.io/badge/version-2.2.1-blue)
+![Version](https://img.shields.io/badge/version-2.3.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Practical AI governance — focused on execution.
@@ -11,6 +11,7 @@ Practical AI governance — focused on execution.
 Defines how AI is actually used, not just policy, risk, or compliance.
 
 **Quick Navigation**
+- **Set up a team today** → `starter/README.md` (Claude Code, Claude chat, Microsoft 365 Copilot; role placeholders included)
 - New user? → `USER_SETUP.md` (5-minute onboarding for any role)
 - Core safety boundary → `SELF_GOVERNANCE.md` (read this first)
 - Daily behavioral rules → `RULES.md`
@@ -34,7 +35,9 @@ AI output can be incorrect, incomplete, or misleading — verification is requir
 
 **New user?** Start with `USER_SETUP.md` — a 5-minute onboarding guide that covers everything you need, regardless of your role.
 
-**Setting up a project?** Create `.ai-governance/config.json` in your project root and copy an entry-point template (CLAUDE.md, GROK.md, etc.). Full instructions and tiered adoption guide below.
+**Setting up a team or project quickly?** Copy `starter/` (see `starter/README.md`): entry points, organization and project layers, and role files with example rules ready to adopt.
+
+**Setting up a project by hand?** Create `.ai-governance/config.json` in your project root and copy an entry-point template (CLAUDE.md, GROK.md, etc.). Full instructions and tiered adoption guide below.
 
 ## About
 
@@ -54,7 +57,7 @@ We keep public releases stable and infrequent while allowing continuous refineme
 - **Milestone tags** (e.g. `v1.0-rollout-ready`, `v1.1-user-layer-complete`): Significant checkpoints or structural improvements.
 - **Semantic versions** (`v2.x.y`): Reserved for material changes to core structure, immutable rules, or `.ai-governance/config.json` schema. Breaking changes will always include migration notes.
 
-**Current stable release:** `v2.2.1`: organization-approved AI accounts and services; an organization may lift the Friday deploy limit (October 2026). See `CHANGELOG.md`.
+**Current stable release:** `v2.3.0`: the starter kit (`starter/`) with fill-in organization and project layers, role placeholders and paste-in instructions for Claude and Microsoft 365 Copilot (October 2026). See `CHANGELOG.md`.
 
 **Key principles**:
 - `.ai-governance/config.json` schema remains stable for the entire v2.x series.
